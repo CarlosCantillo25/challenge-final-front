@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import chapterReducer from "./reducers/reducer";
+import productReducer from "./reducers/product.js"
 
 
 export const store = configureStore({
     reducer: {
-        chapters:chapterReducer
+        product: productReducer
       },
 })
