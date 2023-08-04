@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 export default function Main(){
   return (
-    <div className="h-screen w-screen bg-[white]">
+    <div>
     <NavBar/>
     <Outlet/> 
     <Footer/>
