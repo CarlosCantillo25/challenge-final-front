@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 export default function Index() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const images = [
-    '../public/banner1.png',
-    '../public/aire.png',
-    '../public/pc.jpg',
-    '../public/electronics.png',
+    '/banner1.png',
+    '/aire.png',
+    '/pc.jpg',
+    '/electronics.png',
     // Agrega aquí tus imágenes con sus nombres de archivo
   ];
 
