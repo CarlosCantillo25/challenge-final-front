@@ -1,9 +1,12 @@
+import Index from "./pages/Index";
+
+
 function App() {
 
   return (
-    <>
-      <h1>Vite + React</h1>
-    </>
+    <div className="w-full">
+<Index/>
+</div>
   )
 }
 
