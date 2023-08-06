@@ -23,7 +23,7 @@ const ProductDetail = () => {
 
   const fetchProductDetail = async () => {
     try {
-      const { data } = await api.get(apiUrl + endpoints.products + "64ce83726d388c3fb4f537be");
+      const { data } = await api.get(apiUrl + endpoints.products + "64ce83726d388c3fb4f53796");
       dispatch(setProduct(data.product));
     } catch (error) {
       console.log(error);
@@ -135,330 +135,330 @@ const ProductDetail = () => {
                         <div className='flex flex-col justify-between w-[80%]'>
                           <p className='font-semibold text-xl'>Screen</p>
                           <div className='border-b-2 pb-4 mb-4 ms-[20%]'>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                               <p className='font-semibold'>Inches</p>
-                              <p className='lg:me-[20%]'>{product.description.screen.Inches}</p>
+                              <p className='lg:me-[20%] w-[40%]'>{product.description.screen.Inches}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Resolution</p>
-                            <p className='lg:me-[20%]'>{product.description.screen.Resolution}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.screen.Resolution}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Screen Format</p>
-                            <p className='lg:me-[20%]'>{product.description.screen.ScreenFormat}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.screen.ScreenFormat}</p>
                             </div>
                           </div>
                           <p className='font-semibold text-xl'>General Features</p>
                           <div className='border-b-2 pb-4 mb-4 ms-[20%]'>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Smart TV</p>
-                            <p className='lg:me-[20%]'>{product.description.GeneralFeatures.SmartTV}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.GeneralFeatures.SmartTV}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Processor</p>
-                            <p className='lg:me-[20%]'>{product.description.screen.Processor}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.screen.Processor}</p>
                             </div>
                           </div>
                           <p className='font-semibold text-xl'>Connectivity</p>
                           <div className='border-b-2 pb-4 mb-4 ms-[20%]'>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Inputs HDMI</p>
-                            <p className='lg:me-[20%]'>{product.description.Connectivity.InputsHDMI}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Connectivity.InputsHDMI}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Inputs USB</p>
-                            <p className='lg:me-[20%]'>{product.description.Connectivity.InputsUSB}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Connectivity.InputsUSB}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Internet Connection</p>
-                            <p className='lg:me-[20%]'>{product.description.Connectivity.InternetConnection}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Connectivity.InternetConnection}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>NFC</p>
-                            <p className='lg:me-[20%]'>{product.description.Connectivity.NFC}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Connectivity.NFC}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Headphone Jack</p>
-                            <p className='lg:me-[20%]'>{product.description.Connectivity.HeadphoneJack}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Connectivity.HeadphoneJack}</p>
                             </div>                         
                           </div>
                           <p className='font-semibold text-xl'>Sound</p>
                           <div className='border-b-2 pb-4 mb-4 ms-[20%]'>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Audio Formats</p>
-                            <p className='lg:me-[20%]'>{product.description.Sound.AudioFormats}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Sound.AudioFormats}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Number Of Speakers</p>
-                            <p className='lg:me-[20%]'>{product.description.Sound.NumberOfSpeakers}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Sound.NumberOfSpeakers}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Power</p>
-                            <p className='lg:me-[20%]'>{product.description.Sound.Power}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Sound.Power}</p>
                             </div>
                           </div>
                           <p className='font-semibold text-xl'>Dimensions</p>
                           <div className='border-b-2 pb-4 mb-4 ms-[20%]'>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Hihg</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.High}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.High}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Width</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.Width}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.Width}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Depth</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.Depth}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.Depth}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>High Based</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.HighBased}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.HighBased}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>Width With Base</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.WidthWithBase}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.WidthWithBase}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Depth With Base</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.DepthWithBase}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.DepthWithBase}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                             <p className='font-semibold'>VESA Measure</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.VESAmeasure}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.VESAmeasure}</p>
                             </div>
-                            <div className='flex flex-row justify-between m-4 w-full '>
+                            <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                             <p className='font-semibold'>Weight</p>
-                            <p className='lg:me-[20%]'>{product.description.Dimensions.Weight}</p>
+                            <p className='lg:me-[20%] w-[40%]'>{product.description.Dimensions.Weight}</p>
                             </div>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full'>
                           <p className='font-semibold text-xl'>Model</p>
-                          <p className='lg:me-[16%]'>{product.description.Model}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Model}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full'>
                           <p className='font-semibold text-xl'>Origin</p>
-                          <p className='lg:me-[16%]'>{product.description.Origin}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Origin}</p>
                           </div>
                         </div>
                       </div>
                     ) : (product.brand === "JBL" || product.brand === "PHILIPS" || product.brand === "DAEWOO") && product.type === "SPEAKERS" ? (
                       <div className='flex flex-row w-full justify-center'>
                         <div className='flex flex-col w-[80%]'>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                           <p className='font-semibold text-xl'>EAN</p>
-                          <p className='lg:me-[16%]'>{product.description.EAN}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.EAN}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                           <p className='font-semibold text-xl'>High</p>
-                          <p className='lg:me-[16%]'>{product.description.High}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.High}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                           <p className='font-semibold text-xl'>Width</p>
-                          <p className='lg:me-[16%]'>{product.description.Width}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Width}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                           <p className='font-semibold text-xl'>Color</p>
-                          <p className='lg:me-[16%]'>{product.description.Color}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Color}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                           <p className='font-semibold text-xl'>Guarantee</p>
-                          <p className='lg:me-[16%]'>{product.description.Guarantee}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Guarantee}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                           <p className='font-semibold text-xl'>Model</p>
-                          <p className='lg:me-[16%]'>{product.description.Model}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Model}</p>
                           </div>
 
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                           <p className='font-semibold text-xl'>Origin</p>
-                          <p className='lg:me-[16%]'>{product.description.Origin}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Origin}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                           <p className='font-semibold text-xl'>Weight</p>
-                          <p className='lg:me-[16%]'>{product.description.Weight}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Weight}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                           <p className='font-semibold text-xl'>Depth</p>
-                          <p className='lg:me-[16%]'>{product.description.Depth}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Depth}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                           <p className='font-semibold text-xl'>ESMA</p>
-                          <p className='lg:me-[16%]'>{product.description.ESMA}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.ESMA}</p>
                           </div>
                         </div>
                     </div>
                     ) : (product.brand === "DAEWOO" || product.brand === "SOUL" || product.brand === "STROMBERG" || product.brand === "PHILIPS") && product.type === "HEADPHONES" ? (
                       <div className='flex flex-row w-full justify-center'>
                       <div className='flex flex-col w-[80%]'>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>EAN</p>
-                        <p className='lg:me-[16%]'>{product.description.EAN}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.EAN}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>High</p>
-                        <p className='lg:me-[16%]'>{product.description.High}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.High}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Width</p>
-                        <p className='lg:me-[16%]'>{product.description.Width}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Width}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Depth</p>
-                        <p className='lg:me-[16%]'>{product.description.Depth}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Depth}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Color</p>
-                        <p className='lg:me-[16%]'>{product.description.Color}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Color}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Guarantee</p>
-                        <p className='lg:me-[16%]'>{product.description.Guarantee}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Guarantee}</p>
                         </div>
 
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Origin</p>
-                        <p className='lg:me-[16%]'>{product.description.Origin}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Origin}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Type</p>
-                        <p className='lg:me-[16%]'>{product.description.Type}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Type}</p>
                         </div>
                       </div>
                   </div>
                     ) : (product.brand === "SONY" || product.brand === "GoPro") && product.type === "CAMERAS" ? (
                       <div className='flex flex-row w-full justify-center'>
                         <div className='flex flex-col w-[80%]'>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                           <p className='font-semibold text-xl'>Digital Zoom</p>
-                          <p className='lg:me-[16%]'>{product.description.DigitalZoom}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.DigitalZoom}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                           <p className='font-semibold text-xl'>Connections</p>
-                          <p className='lg:me-[16%]'>{product.description.Connections}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Connections}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full'>
                           <p className='font-semibold text-xl'>Model</p>
-                          <p className='lg:me-[16%]'>{product.description.Model}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Model}</p>
                           </div>
-                          <div className='flex flex-row justify-between m-4 w-full '>
+                          <div className='flex flex-row justify-between m-4 w-full'>
                           <p className='font-semibold text-xl'>Origin</p>
-                          <p className='lg:me-[16%]'>{product.description.Origin}</p>
+                          <p className='lg:me-[16%] w-[40%]'>{product.description.Origin}</p>
                           </div>
                         </div>
                       </div>
                     ) : (product.brand === "HyperX" || product.brand === "Noga" || product.brand === "Razer" || product.brand === "Blue") && product.type === "MICROPHONE" ? (
                       <div className='flex flex-row w-full justify-center'>
                       <div className='flex flex-col w-[80%]'>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Model</p>
-                        <p className='lg:me-[16%]'>{product.description.Model}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Model}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Color</p>
-                        <p className='lg:me-[16%]'>{product.description.Color}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Color}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Cable Length</p>
-                        <p className='lg:me-[16%]'>{product.description.CableLength}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.CableLength}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Built In Speakers</p>
-                        <p className='lg:me-[16%]'>{product.description.BuiltInSpeakers}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.BuiltInSpeakers}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Bluetooth</p>
-                        <p className='lg:me-[16%]'>{product.description.Bluetooth}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Bluetooth}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Input</p>
-                        <p className='lg:me-[16%]'>{product.description.Input}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Input}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Output</p>
-                        <p className='lg:me-[16%]'>{product.description.Output}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Output}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Led Light</p>
-                        <p className='lg:me-[16%]'>{product.description.LedLight}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.LedLight}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Sensitivity</p>
-                        <p className='lg:me-[16%]'>{product.description.Sensitivity}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Sensitivity}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Compatible Devices</p>
-                        <p className='lg:me-[16%]'>{product.description.CompatibleDevices}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.CompatibleDevices}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Weight</p>
-                        <p className='lg:me-[16%]'>{product.description.Weight}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Weight}</p>
                         </div>
                       </div>
                     </div>                      
                     ) : (product.brand === "HP" || product.brand === "LENOVO" || product.brand === "ACER" || product.brand === "ASUS" || product.brand === "APPLE") && (product.type === "NOTEBOOK" ||product.type === "DESKTOP" ) ? (
                       <div className='flex flex-row w-full justify-center'>
                       <div className='flex flex-col w-[80%]'>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Screen</p>
-                        <p className='lg:me-[16%]'>{product.description.Screen}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Screen}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Processor</p>
-                        <p className='lg:me-[16%]'>{product.description.Processor}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Processor}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Operating System</p>
-                        <p className='lg:me-[16%]'>{product.description.OperatingSystem}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.OperatingSystem}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Storage</p>
-                        <p className='lg:me-[16%]'>{product.description.Storage}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Storage}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>RAM</p>
-                        <p className='lg:me-[16%]'>{product.description.RAM}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.RAM}</p>
                         </div>
                       </div>
                     </div>       
                     ) : (product.brand === "Samsung" || product.brand === "Apple" || product.brand === "Xiaomi") && (product.type === "Phones" || product.type === "Tabs") ? (
                       <div className='flex flex-row w-full justify-center'>
                       <div className='flex flex-col w-[80%]'>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Screen</p>
-                        <p className='lg:me-[16%]'>{product.description.Screen}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Screen}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Processor</p>
-                        <p className='lg:me-[16%]'>{product.description.Processor}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Processor}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Operating System</p>
-                        <p className='lg:me-[16%]'>{product.description.OperatingSystem}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.OperatingSystem}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Storage</p>
-                        <p className='lg:me-[16%]'>{product.description.Storage}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Storage}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Camera</p>
-                        <p className='lg:me-[16%]'>{product.description.Camera}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Camera}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Connectivity</p>
-                        <p className='lg:me-[16%]'>{product.description.Connectivity}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Connectivity}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>NFC</p>
-                        <p className='lg:me-[16%]'>{product.description.NFC}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.NFC}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-100'>
                         <p className='font-semibold text-xl'>Batery</p>
-                        <p className='lg:me-[16%]'>{product.description.Batery}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Batery}</p>
                         </div>
-                        <div className='flex flex-row justify-between m-4 w-full '>
+                        <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>Color</p>
-                        <p className='lg:me-[16%]'>{product.description.Color}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.Color}</p>
                         </div>
                       </div>
                     </div>                      
@@ -498,8 +498,8 @@ const ProductDetail = () => {
     <div className='flex flex-col w-full'>
       <div className='w-full flex flex-col items-center justify-center bg-white'>
         {product && (
-          <div className='flex flex-row items-start w-[80%] mt-4'>
-            <Anchor className='hover:text-sky-600 hover:font-semibold'>{product.category}</Anchor><img src="/left.png" className='h-[20px] mt-[3px]'/><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.type}</Anchor><img src="/left.png" className='h-[20px] mt-[3px]' /><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.title}</Anchor>
+          <div className='flex flex-row items-start text-sm md:text-md md:w-[80%] mt-4'>
+            <Anchor className='hover:text-sky-600 hover:font-semibold'>{product.category}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]'/><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.type}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]' /><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.title}</Anchor>
           </div>
         )}
         {product && (
@@ -508,14 +508,14 @@ const ProductDetail = () => {
                   <div className='flex justify-end w-full flex-col lg:flex-row'>
                     <div className='flex flex-col'>
                       <img src="/envios.png" className='absolute w-[80px] mt-[30px]' />
-                      <img src={mainImage} alt={product.title} className='h-[500px] object-cover'/>
+                      <img src={mainImage} alt={product.title} className='md:h-[500px] object-cover'/>
                       <div className='flex'>
                         {product.cover_photo && product.cover_photo.map((image, index) => (
-                            <img key={index} src={image} alt={product.title} className='w-[200px] h-[200px] border rounded-md me-3 cursor-pointer object-cover hover:border-sky-600 hover:border-2' onClick={() => handleImageClick(image)} />
+                            <img key={index} src={image} alt={product.title} className='w-[30%] md:w-[200px] md:h-[200px] border rounded-md me-3 cursor-pointer object-cover hover:border-sky-600 hover:border-2' onClick={() => handleImageClick(image)} />
                         ))}
                       </div>
                     </div>
-                    <div className='flex flex-col border rounded-md p-4 ms-10 mt-6 lg:mt-0'>
+                    <div className='flex flex-col border rounded-md md:p-4 lg:ms-10 mt-6 lg:mt-0'>
                         <div className='border-b-2 rounded'>
                             <p className='text-slate-500 font-bold text-[20px]'>{product.brand}</p>
                             <p className='font-bold text-xl mb-1'>{product.title}</p>
@@ -555,8 +555,8 @@ const ProductDetail = () => {
                     <div className='flex flex-col items-center justify-center mb-10 m-2 bg-white h-[300px] lg:h-[450px] rounded-2xl drop-shadow-xl hover:border-4'>
                       <img src={relatedProduct.cover_photo[0]} alt={relatedProduct.title} className='mb-4 h-[100px] lg:h-[250px]'/>
                       <p className='text-[18px] mb-2 text-center w-[80%]'>{relatedProduct.title}</p>
-                      <p className='font-semibold text-[22px] mb-2'>{formatCurrency(relatedProduct.price)}</p>
-                      <p className='font-semibold text-lime-700 text-[18px] mb-2'>Withdraw it NOW!</p>              
+                      <p className=' font-semibold md:text-[22px] mb-2'>{formatCurrency(relatedProduct.price)}</p>
+                      <p className='font-semibold text-lime-700 md:text-[18px] text-center mb-2'>Withdraw it NOW!</p>              
                     </div>
                   </div>
                 ))}
