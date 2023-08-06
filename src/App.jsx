@@ -1,11 +1,12 @@
 import Index from "./pages/Index";
+import Main from "./layouts/Main"
 
 function App() {
 
   return (
-    <div className="w-full">
-      <Index/>
-    </div>
+    <Main>
+      <Index />
+    </Main>
   )
 }
 
