@@ -15,6 +15,7 @@ export default function Register() {
                     <h2 className="text-[2rem] text-[#448cdf]  font-bold ">Welcome!</h2>
                     <p className=' max-sx:px-8 text-center text-[1rem]  font-bold px-8'>To your most reliable store..</p>
 
+                    <p className=' max-sx:px-8 text-center text-[1rem]  text-[#448cdf] px-8'>  Enter your details to continue..</p>
                     <form className=/*  bg-[#7456] */' flex-col px-8 w-96 flex justify-center max-sx:w-[85%]'>
 
                         <legend className="text-sm pt-[1.5rem] font-bold">Email</legend>
