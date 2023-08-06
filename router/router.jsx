@@ -12,7 +12,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <App />
+                element: <Index />
             },
             {
                 path: '/ProductDetail',
@@ -28,18 +28,5 @@ const router = createBrowserRouter([
             }
         ]
     }
-    path:"/",
-    element:<Main/>,
-    children:[            
-        {
-            path:'/',
-            element: <Index/>
-        },
-        {
-            path:'/ProductDetail',
-            element: <ProductDetail/>
-        },
-    ]
-}
 ])
 export default router
