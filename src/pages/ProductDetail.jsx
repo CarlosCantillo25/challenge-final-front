@@ -23,7 +23,7 @@ const ProductDetail = () => {
 
   const fetchProductDetail = async () => {
     try {
-      const { data } = await api.get(apiUrl + endpoints.products + "64ce83726d388c3fb4f53796");
+      const { data } = await api.get(apiUrl + endpoints.products + "64cfe58186689dc6f586cb14");
       dispatch(setProduct(data.product));
     } catch (error) {
       console.log(error);
