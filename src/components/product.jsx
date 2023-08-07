@@ -9,7 +9,7 @@ export default function Product(props) {
   const prop = props.property;
 
   const dispatch = useDispatch();
-  const allProducts = useSelector((state) => state.product.product);
+  const allProducts = useSelector((state) => state.products.products);
   const [tvProducts, setTvProducts] = useState([]);
 
   const fetchProducts = async () => {

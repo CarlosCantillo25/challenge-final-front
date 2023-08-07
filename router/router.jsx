@@ -1,12 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../src/layouts/Main";
-import ProductDetail from "../src/pages/ProductDetail";
-import Register from "../src/pages/Register";
-import Login from "../src/pages/Login";
-import Index from "../src/pages/Index";
-import Tv from "../src/pages/Tv";
-import Phones from "../src/pages/Phones";
-import Speakers from "../src/pages/Speakers";
+import ProtectedRouter from "./ProtectedRouter";
+import {
+    Main,
+    ProductDetail,
+    Register,
+    Login,
+    Tv,
+    Phones,
+    Speakers,
+    Air,
+    Fridge,
+} from "./index.js";
+
+import Index from "../src/pages/Index.jsx";
 
 const router = createBrowserRouter([
     {
@@ -18,16 +24,24 @@ const router = createBrowserRouter([
                 element: <Index />
             },
             {
-                path: '/tv',
+                path: '/TV',
                 element: <Tv />
             },
             {
-                path: '/phones',
+                path: '/Phones',
                 element: <Phones />
             },
             {
-                path: '/speakers',
+                path: '/SPEAKERS',
                 element: <Speakers />
+            },
+            {
+                path: '/Air',
+                element: <Air />
+            },
+            {
+                path: '/Fridge',
+                element: <Fridge />
             },
             {
                 path: '/products/:id',
@@ -35,11 +49,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/Register',
-                element: <Register />
+                element: (
+                    <ProtectedRouter>
+                        <Register />
+                    </ProtectedRouter>
+                )
             },
             {
                 path: '/Login',
-                element: <Login />
+                element: (
+                    <ProtectedRouter>
+                        <Login />
+                    </ProtectedRouter>
+                )
             }
         ]
     }

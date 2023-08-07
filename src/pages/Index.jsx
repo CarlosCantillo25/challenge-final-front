@@ -10,9 +10,7 @@ export default function Index() {
   }, [dispatch]);
 
   const read_products = useSelector((store) => store.products.products);
-  console.log(read_products);
   const moreViews = read_products.filter((elemento) => elemento.Moreview === true);
-  console.log(moreViews);
   const [currentSlideCarousel1, setCurrentSlideCarousel1] = useState(0);
   const [currentSlideCarousel2, setCurrentSlideCarousel2] = useState(0);
   const [currentSlideCarousel3, setCurrentSlideCarousel3] = useState(0);
@@ -85,10 +83,10 @@ export default function Index() {
   
   const images = [
 
-    '../public/pc.jpg',
-    '../public/banner1.png',
-    '../public/aire.png',
-    '../public/electronics.png',
+    '/pc.jpg',
+    '/banner1.png',
+    '/aire.png',
+    '/electronics.png',
     // Agrega aquí tus imágenes con sus nombres de archivos
  ];
  
@@ -138,7 +136,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentPhones.map((item, index) => (
   <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
@@ -163,7 +161,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div>
 
@@ -180,7 +178,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentDesktop.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
@@ -205,7 +203,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div>
 {/* AQUI VA EL TERCER CARROUSEL MULTIPLE*/} 
@@ -221,7 +219,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentGamers.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
@@ -246,7 +244,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div> 
 {/* AQUI VA EL CUARTO CARROUSEL MULTIPLE*/}  
@@ -262,7 +260,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentAudio.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
@@ -287,7 +285,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div>
 {/* AQUI VA EL QUINTO CARROUSEL MULTIPLE*/}  
@@ -303,7 +301,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentElectro.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
@@ -328,7 +326,7 @@ export default function Index() {
     fill="none"
     viewBox="0 0 14 10"
   >
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div>
     </div>
