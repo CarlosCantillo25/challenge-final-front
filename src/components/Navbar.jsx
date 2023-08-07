@@ -15,6 +15,31 @@ function NavBar() {
     setIsDropdownOpen(false);
   };
 
+  function navigateToTVPage() {
+    navigate("/TV");
+  }
+  function navigateToPhonesPage() {
+    navigate("/Phones");
+  }
+  function navigateToFrezeerPage() {
+    navigate("/Fridge");
+  }
+  function navigateToAudioPage() {
+    navigate("/SPEAKERS");
+  }
+
+  function navigateToAirPage() {
+    navigate("/Air");
+  }
+
+  function navigateToLoginPage() {
+    navigate("/Login");
+  }
+
+  function navigateToRegisterPage() {
+    navigate("/Register");
+  }
+
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">

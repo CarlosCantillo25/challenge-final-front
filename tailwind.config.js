@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit',
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './index.html'],
-  darkMode: 'class',
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './index.html'],
   theme: {
     extend: {
       screens: {
@@ -11,6 +10,5 @@ module.exports = {
       },
     },
   },
-  variants: {},
-  plugins: [],
-};
+  plugins: []
+}
