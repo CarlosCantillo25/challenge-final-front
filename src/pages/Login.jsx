@@ -6,7 +6,7 @@ export default function Register() {
     return (
         <div className= /*bg-[#333] */"flex flex-col justify-between min-h-screen ">
             <div className= /*bg-[aqua]*/'p-[1rem] flex justify-center items-center min-h-[10vh] w-fullmax-sx:flex'>
-                <img src="./public/l4.png" alt="logo" className='w-[6rem] max-sx:w-[4.5rem]' />
+                <img src="/l4.png" alt="logo" className='w-[6rem] max-sx:w-[4.5rem]' />
                 <h1 className='text-[#448cdf] text-[2.5rem] font-bold max-sx:text-[1.3rem]'>CGGI TECH</h1>
             </div>
 
@@ -49,7 +49,7 @@ export default function Register() {
                             Go back to <span className="text-blue-500">home</span>
                         </Link>
                     </div>
-                    <img src="./public/l3.png" alt="logo" className='w-[3rem] max-sx:w-[4.5rem]' />
+                    <img src="/l3.png" alt="logo" className='w-[3rem] max-sx:w-[4.5rem]' />
                     <h4>CGGI TECH</h4>
                 </article>
             </div>

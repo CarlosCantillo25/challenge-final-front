@@ -15,20 +15,20 @@ function NavBar() {
   };
 
   function navigateToTVPage() {
-    navigate("/tv");
+    navigate("/TV");
   }
   function navigateToPhonesPage() {
-    navigate("/phones");
+    navigate("/Phones");
   }
   function navigateToFrezeerPage() {
-    navigate("/fridge");
+    navigate("/Fridge");
   }
   function navigateToAudioPage() {
-    navigate("/speakers");
+    navigate("/SPEAKERS");
   }
 
   function navigateToAirPage() {
-    navigate("/air");
+    navigate("/Air");
   }
 
   function navigateToLoginPage() {
