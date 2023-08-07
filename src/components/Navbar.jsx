@@ -31,6 +31,14 @@ function NavBar() {
     navigate("/air");
   }
 
+  function navigateToLoginPage() {
+    navigate("/Login");
+  }
+
+  function navigateToRegisterPage() {
+    navigate("/Register");
+  }
+
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
@@ -46,7 +54,7 @@ function NavBar() {
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
           </svg>
           <div className='hidden md:flex w-[8rem] justify-around'>
-            <a className='text-[white]'>Log in</a>|<a className='text-[white]'>Register</a>
+            <button onClick={navigateToLoginPage} className='text-[white]'>Log in</button>|<button onClick={navigateToRegisterPage} className='text-[white]'>Register</button>
           </div>
         </div>
         <div className='flex flex-col items-center'>
