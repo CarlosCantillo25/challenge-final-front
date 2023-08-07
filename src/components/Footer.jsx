@@ -1,5 +1,5 @@
 export default function Footer() {
-    return (
+return (
       <footer className="bg-[#007BFF] w-full text-white">
         <div className="flex flex-col md:flex-row justify-around md:items-start pb-10">
           <div className="flex md:flex-col flex-row">

@@ -5,7 +5,7 @@ const initialState = {
   product: {}
 }
 
-  const productReducer = createReducer(initialState, (builder) => { 
+  const productRedu = createReducer(initialState, (builder) => { 
     builder
       .addCase(setProduct, (state, action) => {
         const newState = {
@@ -16,4 +16,4 @@ const initialState = {
       })
   })
 
-export default productReducer
+export default productRedu

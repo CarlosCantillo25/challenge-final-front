@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link as Anchor } from "react-router-dom";
+import { useNavigate } from 'react-router';
 
 function NavBar() {
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const openDropdown = () => {
@@ -12,11 +14,6 @@ function NavBar() {
   const closeDropdown = () => {
     setIsDropdownOpen(false);
   };
-
-  function backHome() {
-    localStorage.clear();
-    navigate("/");
-  }
 
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
@@ -33,7 +30,7 @@ function NavBar() {
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
           </svg>
           <div className='hidden md:flex w-[8rem] justify-around'>
-            <a className='text-[white]'>Log in</a>|<a className='text-[white]'>Register</a>
+            <button onClick={navigateToLoginPage} className='text-[white]'>Log in</button>|<button onClick={navigateToRegisterPage} className='text-[white]'>Register</button>
           </div>
           <Anchor
             onClick={backHome}
@@ -60,28 +57,28 @@ function NavBar() {
             </div>
           )}
         </div>
-        <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
-          <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/TV.png" alt="" />
-            <p>TV</p>
-          </button>
-          <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/cell.png" alt="" />
-            <p>Phones</p>
-          </button>
-          <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/freezer.png" alt="" />
-            <p>Freezer</p>
-          </button>
-          <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/audio.png" alt="" />
-            <p>Audio</p>
-          </button>
-          <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/air.png" alt="" />
-            <p>Air conditionet</p>
-          </button>
-        </div>
+      <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
+        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/TV.png" alt="" />
+          <p>TV</p>
+        </button>
+        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/cell.png" alt="" />
+          <p>Phones</p>
+        </button>
+        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/freezer.png" alt="" />
+          <p>Freezer</p>
+        </button>
+        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/audio.png" alt="" />
+          <p>Audio</p>
+        </button>
+        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/air.png" alt="" />
+          <p>Air conditionet</p>
+        </button>
+      </div>
       </div>
     </nav>
   );
