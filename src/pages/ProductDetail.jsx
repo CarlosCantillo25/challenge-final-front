@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProduct } from '../redux/actions/product.js';
-import { useParams } from 'react-router-dom';
 import { api, apiUrl, endpoints } from '../utils/api.js';
-import { Link as Anchor } from 'react-router-dom';
+import { Link as Anchor, useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const ProductDetail = () => {
-  const { _id } = useParams();
+  const  _id  = useParams()
+  const {id} =_id
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [cuota12, setCuota12] = useState(0);
   const [cuota6, setCuota6] = useState(0);
   const [cuota3, setCuota3] = useState(0);
@@ -18,12 +19,19 @@ const ProductDetail = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [isTechnicalModalOpen, setIsTechnicalModalOpen] = useState(true);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
-
   const product = useSelector((state) => state.product.product);
+
+  function navigateToHomePage() {
+    navigate("/");
+  }
+
+  function toBack() {
+    history.goBack()
+  }
 
   const fetchProductDetail = async () => {
     try {
-      const { data } = await api.get(apiUrl + endpoints.products + "64cfe58186689dc6f586cb14");
+      const { data } = await api.get(apiUrl + endpoints.product + id);
       dispatch(setProduct(data.product));
     } catch (error) {
       console.log(error);
@@ -50,7 +58,8 @@ const ProductDetail = () => {
 
   useEffect(() => {
     fetchProductDetail();
-  }, [dispatch, _id]);
+    window.scrollTo(0, 200)
+  }, [dispatch, id]);
 
   useEffect(() => {
     if (product && product.price) {
@@ -67,7 +76,7 @@ const ProductDetail = () => {
 
   const formatCurrency = (amount) => {
     if (typeof amount === 'number') {
-      return amount.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+      return `USD $${amount.toFixed(0)}`;
     } else {
       return '';
     }
@@ -499,7 +508,7 @@ const ProductDetail = () => {
       <div className='w-full flex flex-col items-center justify-center bg-white'>
         {product && (
           <div className='flex flex-row items-start text-sm md:text-md md:w-[80%] mt-4'>
-            <Anchor className='hover:text-sky-600 hover:font-semibold'>{product.category}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]'/><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.type}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]' /><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.title}</Anchor>
+            <Anchor onClick={navigateToHomePage} className='hover:text-sky-600 hover:font-semibold'>{product.category}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]'/><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.type}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]' /><p className='hover:text-sky-600 hover:font-semibold'>{product.title}</p>
           </div>
         )}
         {product && (
@@ -508,10 +517,10 @@ const ProductDetail = () => {
                   <div className='flex justify-end w-full flex-col lg:flex-row'>
                     <div className='flex flex-col'>
                       <img src="/envios.png" className='absolute w-[80px] mt-[30px]' />
-                      <img src={mainImage} alt={product.title} className='md:h-[500px] object-cover'/>
+                      <img src={mainImage} alt={product.title} className='md:h-[500px] object-contain p-4'/>
                       <div className='flex'>
                         {product.cover_photo && product.cover_photo.map((image, index) => (
-                            <img key={index} src={image} alt={product.title} className='w-[30%] md:w-[200px] md:h-[200px] border rounded-md me-3 cursor-pointer object-cover hover:border-sky-600 hover:border-2' onClick={() => handleImageClick(image)} />
+                            <img key={index} src={image} alt={product.title} className='w-[30%] md:w-[200px] md:h-[200px] border rounded-md me-3 cursor-pointer object-contain hover:border-sky-600 hover:border-2' onClick={() => handleImageClick(image)} />
                         ))}
                       </div>
                     </div>
@@ -552,12 +561,14 @@ const ProductDetail = () => {
               <Slider {...sliderSettings}>
                 {relatedProducts.map((relatedProduct) => (
                   <div key={relatedProduct._id}>
-                    <div className='flex flex-col items-center justify-center mb-10 m-2 bg-white h-[300px] lg:h-[450px] rounded-2xl drop-shadow-xl hover:border-4'>
-                      <img src={relatedProduct.cover_photo[0]} alt={relatedProduct.title} className='mb-4 h-[100px] lg:h-[250px]'/>
-                      <p className='text-[18px] mb-2 text-center w-[80%]'>{relatedProduct.title}</p>
-                      <p className=' font-semibold md:text-[22px] mb-2'>{formatCurrency(relatedProduct.price)}</p>
-                      <p className='font-semibold text-lime-700 md:text-[18px] text-center mb-2'>Withdraw it NOW!</p>              
-                    </div>
+                    <Anchor to={`/products/${relatedProduct._id}`}>
+                      <div className='flex flex-col items-center justify-center mb-10 m-2 bg-white h-[300px] lg:h-[450px] rounded-2xl drop-shadow-xl hover:border-4'>
+                        <img src={relatedProduct.cover_photo[0]} alt={relatedProduct.title} className='mb-4 h-[100px] lg:h-[250px]'/>
+                        <p className='text-[18px] mb-2 text-center w-[80%]'>{relatedProduct.title}</p>
+                        <p className=' font-semibold md:text-[22px] mb-2'>{formatCurrency(relatedProduct.price)}</p>
+                        <p className='font-semibold text-lime-700 md:text-[18px] text-center mb-2'>Withdraw it NOW!</p>              
+                      </div>
+                    </Anchor>
                   </div>
                 ))}
               </Slider>
