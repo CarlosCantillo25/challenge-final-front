@@ -5,7 +5,6 @@ const read_products = createAsyncThunk(
         console.log()
         try {
             let {data} = await axios.get("http://localhost:8082/api/products")
-            console.log(data)
             return data.response
         } catch (error) {
             console.log(error)

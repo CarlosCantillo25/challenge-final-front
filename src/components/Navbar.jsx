@@ -21,7 +21,7 @@ function NavBar() {
     navigate("/phones");
   }
   function navigateToFrezeerPage() {
-    navigate("/freezer");
+    navigate("/fridge");
   }
   function navigateToAudioPage() {
     navigate("/speakers");
@@ -78,7 +78,7 @@ function NavBar() {
         </button>
         <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/freezer.png" alt="" />
-          <p>Freezer</p>
+          <p>Fridges</p>
         </button>
         <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/audio.png" alt="" />
