@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
-import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
 
 function NavBar() {
+
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -44,6 +44,20 @@ function NavBar() {
     navigate("/");
   }
 
+  let user = JSON.parse(localStorage.getItem("user"));
+
+  const isLoggedIn = () => {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
+    return token && user;
+  };
+
+
+  function backHome() {
+    localStorage.clear();
+    navigate("/");
+  }
+
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
@@ -54,20 +68,25 @@ function NavBar() {
             <AiOutlineSearch size={24} />
           </span>
         </div>
-        <div className='flex flex-col items-center'>
-          <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
-          </svg>
-          <div className='hidden md:flex w-[8rem] justify-around'>
-            <button onClick={navigateToLoginPage} className='text-[white]'>Log in</button>|<button onClick={navigateToRegisterPage} className='text-[white]'>Register</button>
+        {!isLoggedIn() ? (
+          // Mostrar esto solo cuando el usuario no esté logueado
+          <div className='flex flex-col items-center'>
+            <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
+            </svg>
+            <div className='hidden md:flex w-[8rem] justify-around'>
+              <button onClick={navigateToLoginPage} className='text-[white]'>Log in</button>|<button onClick={navigateToRegisterPage} className='text-[white]'>Register</button>
+            </div>
           </div>
-          <Anchor
-            onClick={backHome}
-            className="text-[white]"
-          >
-            Sign Out
-          </Anchor>
-        </div>
+        ) : (
+          // Mostrar esto solo cuando el usuario esté logueado
+          <div className='flex flex-col items-center'>
+            <img src={user?.photo} className="w-6 h-6" />
+            <div className='hidden md:flex w-[8rem] justify-around'>
+              <button onClick={navigateToLoginPage} className='text-[white]'>{user?.email}</button>|<button onClick={backHome} className='text-[white]'>  Sign Out</button>
+            </div>
+          </div>
+        )}
         <div className='flex flex-col items-center'>
           <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
@@ -86,28 +105,28 @@ function NavBar() {
             </div>
           )}
         </div>
-      <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
-        <button onClick={navigateToTVPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/TV.png" alt="" />
-          <p>TV</p>
-        </button>
-        <button onClick={navigateToPhonesPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/cell.png" alt="" />
-          <p>Phones</p>
-        </button>
-        <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/freezer.png" alt="" />
-          <p>Fridges</p>
-        </button>
-        <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/audio.png" alt="" />
-          <p>Audio</p>
-        </button>
-        <button onClick={navigateToAirPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/air.png" alt="" />
-          <p>Air conditionet</p>
-        </button>
-      </div>
+        <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
+          <button onClick={navigateToTVPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/TV.png" alt="" />
+            <p>TV</p>
+          </button>
+          <button onClick={navigateToPhonesPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/cell.png" alt="" />
+            <p>Phones</p>
+          </button>
+          <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/freezer.png" alt="" />
+            <p>Fridges</p>
+          </button>
+          <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/audio.png" alt="" />
+            <p>Audio</p>
+          </button>
+          <button onClick={navigateToAirPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/air.png" alt="" />
+            <p>Air conditionet</p>
+          </button>
+        </div>
       </div>
     </nav>
   );
