@@ -84,13 +84,14 @@ export default function Index() {
   };
   
   const images = [
+
     '../public/pc.jpg',
     '../public/banner1.png',
     '../public/aire.png',
     '../public/electronics.png',
-    // Agrega aquí tus imágenes con sus nombres de archivo
-  ];
-  
+    // Agrega aquí tus imágenes con sus nombres de archivos
+ ];
+ 
   const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
   const currentPhones = imagesPhones.slice(currentSlideCarousel2, currentSlideCarousel2 + imagesPorSlide);
   const imagesDesktop = moreViews.filter(item => item.type === "NOTEBOOK" || item.type === "DESKTOP");
@@ -280,7 +281,7 @@ export default function Index() {
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div>
-{/* AQUI VA EL Quinto CARROUSEL MULTIPLEEEEEE*/}  
+{/* AQUI VA EL QUINTO CARROUSEL MULTIPLE*/}  
 <div className='py-[1rem]'>
         <p className='text-[1.25rem]'>More views on Electrodomestics</p>
       </div>
