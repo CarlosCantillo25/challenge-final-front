@@ -25,10 +25,6 @@ const ProductDetail = () => {
     navigate("/");
   }
 
-  function toBack() {
-    history.goBack()
-  }
-
   const fetchProductDetail = async () => {
     try {
       const { data } = await api.get(apiUrl + endpoints.product + id);

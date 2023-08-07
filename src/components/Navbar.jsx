@@ -21,7 +21,7 @@ function NavBar() {
     navigate("/phones");
   }
   function navigateToFrezeerPage() {
-    navigate("/freezer");
+    navigate("/fridge");
   }
   function navigateToAudioPage() {
     navigate("/speakers");
