@@ -88,7 +88,7 @@ export default function Index() {
     '../public/banner1.png',
     '../public/aire.png',
     '../public/electronics.png',
-    // Agrega aquí tus imágenes con sus nombres de archivosdssfsdfdsfdsfsdsdnfisdnvddsfsd
+    // Agrega aquí tus imágenes con sus nombres de archivos
   ];
   
   const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
