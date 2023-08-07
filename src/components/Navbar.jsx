@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
+import { Link as Anchor } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 
 function NavBar() {
 
   const navigate = useNavigate();
+  const [verificationCode, setVerificationCode] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
 
   const openDropdown = () => {
     setIsDropdownOpen(true);
@@ -13,6 +16,13 @@ function NavBar() {
 
   const closeDropdown = () => {
     setIsDropdownOpen(false);
+  };
+  const openVerified = () => {
+    setIsVerified(true);
+  };
+
+  const closeVerified = () => {
+    setIsVerified(false);
   };
 
   function navigateToTVPage() {
@@ -59,6 +69,40 @@ function NavBar() {
     navigate("/");
   }
 
+  const handleVerificationSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.get(apiUrl + "auth/verify/" + verificationCode);
+
+      if (response.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Account verified successfully.",
+          text: "You can now sign in to your Google account!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+
+        navigate('/signin')
+
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Verification Error.",
+          text: "The verification code is invalid. Please check the code and try again.",
+        });
+      }
+    } catch (error) {
+      console.error("Verification failed:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Verification failed.",
+        text: "The verification code is invalid. Please check the code and try again.",
+      });
+    }
+  }
+
   return (
     <nav className="bg-[#007BFF] w-full min-h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
@@ -96,9 +140,27 @@ function NavBar() {
           <p className='hidden md:block text-[white]'>My shopping cart</p>
         </div>
       </div>
-      <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
-        <p className='font-semibold'>CLICK <Anchor to={'/verifyAccount'} className='text-green'>HERE</Anchor> TO VERIFY YOUR ACCOUNT</p>
-      </div>
+      {isLoggedIn() && user && user.verified === false ? (
+        <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
+          <p className='font-semibold'>CLICK <button onClick={openVerified} className='text-sky-700 hover:text-white'> HERE </button> TO VERIFY YOUR ACCOUNT</p>
+        </div>
+      ) : ''}
+          {isVerified && (
+                <div className="flex flex-col w-full min-h-[25vh] items-center justify-around bg-[#FFFBEB]">
+                  <button onClick={closeVerified}>
+                    <img src="/close.png" className="h-7 ms-[20%] mt-[-4%] absolute" />
+                  </button>
+                  <form onSubmit={handleVerificationSubmit} className="flex mt-[-10%]">
+                    <label className="text-[color:var(--secondary-gray,#9D9D9D)] text-base not-italic font-normal leading-[normal]">Enter Verification Code:</label>
+                    <div className="ms-5 mt-[-20px]">
+                        <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} required className="bg-[#FFFBEB] border-b-2 border-slate-400 p-2" />
+                        <div className="mt-5 flex flex-col w-[200px] gap-2.5 p-2 rounded-[50000px] bg-[#007BFF]">
+                            <button type="submit" className="text-white text-center text-lg not-italic font-bold leading-[normal]">Verify</button>
+                        </div>
+                    </div>
+                  </form>
+              </div>
+          )}
       <div id='segunda seccion' className="bg-[#F5F5F5] h-[10vh] w-full flex items-center p-10">
         <div className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[30rem]" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
           <span className="text-[gray] cursor-pointer font-semibold lg:text-2xl text-xl ms-[-40px] md:ms-0">CATEGORIES</span>
