@@ -66,11 +66,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/verifyAccount',
-                element: (
-                    <ProtectedRouter>
-                        <VerifyAccount />
-                    </ProtectedRouter>
-                )
+                element:<VerifyAccount />
             },
         ]
     }
