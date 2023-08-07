@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions.js';
-
+import { Link as Anchor } from 'react-router-dom';
 export default function Index() {
   const dispatch = useDispatch();
 
@@ -100,6 +100,7 @@ export default function Index() {
   const currentAudio = imagesAudio.slice(currentSlideCarousel5, currentSlideCarousel5 + imagesPorSlide);
   const imagesElectro = moreViews.filter(item => item.type === "Fridge" || item.type === "Air" || item.type === "Kitchen" || item.type === "Blender" || item.type === "Laundry");
   const currentElectro= imagesElectro.slice(currentSlideCarousel6, currentSlideCarousel6 + imagesPorSlide);
+  
   return (
     <main className='bg-[white] w-full h-auto'>
       <div className="relative w-full h-[60vh] bg-[#e6e6e6] ">
@@ -138,12 +139,14 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentPhones.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+  <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+    <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel2 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
+      />  
+      </Anchor>
       <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
       <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
       <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
@@ -178,12 +181,14 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentDesktop.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel3 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
+      />  
+      </Anchor>
       <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
       <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
       <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
@@ -217,12 +222,14 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentGamers.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`} >
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel4 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
+      />  
+      </Anchor>
       <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
       <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
       <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
@@ -256,12 +263,14 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentAudio.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel5 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
+      />  
+      </Anchor>
       <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
       <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
       <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
@@ -295,12 +304,14 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentElectro.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel6 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
+      /> 
+      </Anchor>
       <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
       <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
       <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>

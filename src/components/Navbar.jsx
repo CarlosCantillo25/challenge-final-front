@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
+import { Link as Anchor } from 'react-router-dom';
+
 
 function NavBar() {
   const navigate = useNavigate();
@@ -43,11 +45,12 @@ function NavBar() {
   function backHome() {
     navigate("/");
   }
+ 
 
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
-        <img src="/logo2.png" alt="logo" className="hidden md:block w-[6rem] object-contain" />
+        <Anchor to={'/'} ><img src="/logo2.png" alt="logo" className="hidden md:block w-[6rem] object-contain" /></Anchor>
         <div className="relative flex items-center">
           <input type="text" placeholder="Find what you are looking for" className="md:w-[20rem] lg:w-[30rem] h-[2.5rem] rounded-[5px] pl-[1rem] pr-[3rem] bg-white border-[#007BFF] focus:ring-[#007BFF] focus:shadow-[#007BFF] outline-none" />
           <span className="absolute right-[1rem] md:right-[3rem] top-[50%] transform -translate-y-1/2 text-[#007BFF]">

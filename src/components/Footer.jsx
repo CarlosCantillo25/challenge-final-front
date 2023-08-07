@@ -1,9 +1,10 @@
+import { Link as Anchor } from "react-router-dom";
 export default function Footer() {
 return (
       <footer className="bg-[#007BFF] w-full text-white">
         <div className="flex flex-col md:flex-row justify-around md:items-start pb-10">
           <div className="flex md:flex-col flex-row">
-            <img src="/logo2.png" className="h-[200px] object-cover" />
+            <Anchor to={'/'}><img src="/logo2.png" className="h-[200px] object-cover" /></Anchor>
             <div className="flex flex-col md:flex-row md:mt-[-30px] justify-around">
               <img src="/facebook.png" className="h-[35px]" />
               <img src="/instagram.png" className="h-[35px]" />
