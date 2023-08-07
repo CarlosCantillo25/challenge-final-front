@@ -280,7 +280,7 @@ export default function Index() {
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
   </svg>
 </div>
-{/* AQUI VA EL Quinto CARROUSEL MULTIPLE*/}  
+{/* AQUI VA EL Quinto CARROUSEL MULTIPLEEEEEE*/}  
 <div className='py-[1rem]'>
         <p className='text-[1.25rem]'>More views on Electrodomestics</p>
       </div>
