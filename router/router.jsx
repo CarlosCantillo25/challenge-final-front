@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 element: <Speakers />
             },
             {
-                path: '/ProductDetail',
+                path: '/products/:id',
                 element: <ProductDetail />
             },
             {
