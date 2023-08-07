@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../src/layouts/Main";
-import ProductDetail from "../src/pages/ProductDetail";
-import Register from "../src/pages/Register";
-import Login from "../src/pages/Login";
-import Index from "../src/pages/Index";
+import ProtectedRouter from "./ProtectedRouter";
+import {
+    Main,
+    ProductDetail,
+    Register,
+    Login
+} from "./index.js";
+
+import Index from "../src/pages/Index.jsx";
 
 const router = createBrowserRouter([
     {
@@ -20,11 +24,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/Register',
-                element: <Register />
+                element: (
+                    <ProtectedRouter>
+                        <Register />
+                    </ProtectedRouter>
+                )
             },
             {
                 path: '/Login',
-                element: <Login />
+                element: (
+                    <ProtectedRouter>
+                        <Login />
+                    </ProtectedRouter>
+                )
             }
         ]
     }
