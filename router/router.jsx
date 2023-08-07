@@ -1,14 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../src/layouts/Main";
-import ProductDetail from "../src/pages/ProductDetail";
-import Register from "../src/pages/Register";
-import Login from "../src/pages/Login";
-import Index from "../src/pages/Index";
-import Tv from "../src/pages/Tv";
-import Phones from "../src/pages/Phones";
-import Speakers from "../src/pages/Speakers";
-import Air from "../src/pages/Air"
-import Fridge from "../src/pages/Fridge";
+import ProtectedRouter from "./ProtectedRouter";
+import {
+    Main,
+    ProductDetail,
+    Register,
+    Login,
+    Tv,
+    Phones,
+    Speakers,
+    Air,
+    Fridge,
+} from "./index.js";
+
+import Index from "../src/pages/Index.jsx";
 
 const router = createBrowserRouter([
     {
@@ -45,11 +49,19 @@ const router = createBrowserRouter([
             },
             {
                 path: '/Register',
-                element: <Register />
+                element: (
+                    <ProtectedRouter>
+                        <Register />
+                    </ProtectedRouter>
+                )
             },
             {
                 path: '/Login',
-                element: <Login />
+                element: (
+                    <ProtectedRouter>
+                        <Login />
+                    </ProtectedRouter>
+                )
             }
         ]
     }
