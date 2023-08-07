@@ -130,7 +130,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel2}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -147,15 +147,15 @@ export default function Index() {
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
       />  
       </Anchor>
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel2}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -172,7 +172,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel3}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -189,15 +189,15 @@ export default function Index() {
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
       />  
       </Anchor>
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel3}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -213,7 +213,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel4}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -230,15 +230,15 @@ export default function Index() {
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
       />  
       </Anchor>
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel4}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -254,7 +254,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel5}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -271,15 +271,15 @@ export default function Index() {
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
       />  
       </Anchor>
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel5}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -295,7 +295,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel6}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -312,15 +312,15 @@ export default function Index() {
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
       /> 
       </Anchor>
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel6}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

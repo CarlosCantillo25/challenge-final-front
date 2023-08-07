@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
-import { Link as Anchor } from 'react-router-dom';
 
 
 function NavBar() {
