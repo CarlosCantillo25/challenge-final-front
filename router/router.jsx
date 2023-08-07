@@ -7,6 +7,8 @@ import Index from "../src/pages/Index";
 import Tv from "../src/pages/Tv";
 import Phones from "../src/pages/Phones";
 import Speakers from "../src/pages/Speakers";
+import Air from "../src/pages/Air"
+import Fridge from "../src/pages/Fridge";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: '/speakers',
                 element: <Speakers />
+            },
+            {
+                path: '/air',
+                element: <Air />
+            },
+            {
+                path: '/fridge',
+                element: <Fridge />
             },
             {
                 path: '/products/:id',
