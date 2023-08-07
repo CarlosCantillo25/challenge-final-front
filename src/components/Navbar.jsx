@@ -43,6 +43,7 @@ function NavBar() {
   function backHome() {
     navigate("/");
   }
+ 
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -59,15 +60,16 @@ function NavBar() {
   }
 
   return (
-    <nav className="bg-[#007BFF] w-full h-[25vh]">
+    <nav className="bg-[#007BFF] w-full min-h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
-        <img src="/logo2.png" alt="logo" className="hidden md:block w-[6rem] object-contain" />
+        <Anchor to={'/'} ><img src="/logo2.png" alt="logo" className="hidden md:block w-[6rem] object-contain" /></Anchor>
         <div className="relative flex items-center">
           <input type="text" placeholder="Find what you are looking for" className="md:w-[20rem] lg:w-[30rem] h-[2.5rem] rounded-[5px] pl-[1rem] pr-[3rem] bg-white border-[#007BFF] focus:ring-[#007BFF] focus:shadow-[#007BFF] outline-none" />
           <span className="absolute right-[1rem] md:right-[3rem] top-[50%] transform -translate-y-1/2 text-[#007BFF]">
             <AiOutlineSearch size={24} />
           </span>
         </div>
+
         {!isLoggedIn() ? (
           // Mostrar esto solo cuando el usuario no esté logueado
           <div className='flex flex-col items-center'>
@@ -88,12 +90,14 @@ function NavBar() {
           </div>
         )}
         <div className='flex flex-col items-center'>
-          <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+          <svg className="w-6 h-6 text-[#ffc548]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
           </svg>
           <p className='hidden md:block text-[white]'>My shopping cart</p>
         </div>
-
+      </div>
+      <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
+        <p className='font-semibold'>CLICK <Anchor to={'/verifyAccount'} className='text-green'>HERE</Anchor> TO VERIFY YOUR ACCOUNT</p>
       </div>
       <div id='segunda seccion' className="bg-[#F5F5F5] h-[10vh] w-full flex items-center p-10">
         <div className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[30rem]" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions.js';
-
+import { Link as Anchor } from 'react-router-dom';
 export default function Index() {
   const dispatch = useDispatch();
 
@@ -100,6 +100,7 @@ export default function Index() {
   const currentAudio = imagesAudio.slice(currentSlideCarousel5, currentSlideCarousel5 + imagesPorSlide);
   const imagesElectro = moreViews.filter(item => item.type === "Fridge" || item.type === "Air" || item.type === "Kitchen" || item.type === "Blender" || item.type === "Laundry");
   const currentElectro= imagesElectro.slice(currentSlideCarousel6, currentSlideCarousel6 + imagesPorSlide);
+  
   return (
     <main className='bg-[white] w-full h-auto'>
       <div className="relative w-full h-[60vh] bg-[#e6e6e6] ">
@@ -129,7 +130,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel2}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -138,21 +139,23 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentPhones.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+  <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+    <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel2 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      />  
+      </Anchor>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel2}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -169,7 +172,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel3}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -178,21 +181,23 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentDesktop.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel3 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      />  
+      </Anchor>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel3}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -208,7 +213,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel4}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -217,21 +222,23 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentGamers.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`} >
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel4 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      />  
+      </Anchor>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel4}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -247,7 +254,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel5}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -256,21 +263,23 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentAudio.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel5 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      />  
+      </Anchor>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel5}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -286,7 +295,7 @@ export default function Index() {
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
     onClick={prevSlideCarousel6}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -295,21 +304,23 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentElectro.map((item, index) => (
-    <div key={index} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+      <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel6 + index + 1}`}
         className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
-      />
-      <h3 className="text-center text-gray-800 dark:text-white">{item.brand}</h3>
-      <h4 className="text-center text-gray-800 dark:text-white">{item.title}</h4>
-      <p className="text-center text-gray-500 dark:text-gray-300">$ {item.price}</p>
+      /> 
+      </Anchor>
+      <h3 className="text-center text-gray-800">{item.brand}</h3>
+      <h4 className="text-center text-gray-800">{item.title}</h4>
+      <p className="text-center text-gray-500">$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
   <svg
     onClick={nextSlideCarousel6}
-    className="w-7 h-7 text-gray-800 dark:text-white cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
+    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
     aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

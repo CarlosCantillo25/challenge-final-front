@@ -13,6 +13,7 @@ import {
 } from "./index.js";
 
 import Index from "../src/pages/Index.jsx";
+import VerifyAccount from "../src/pages/VerifyAccount";
 
 const router = createBrowserRouter([
     {
@@ -62,7 +63,15 @@ const router = createBrowserRouter([
                         <Login />
                     </ProtectedRouter>
                 )
-            }
+            },
+            {
+                path: '/verifyAccount',
+                element: (
+                    <ProtectedRouter>
+                        <VerifyAccount />
+                    </ProtectedRouter>
+                )
+            },
         ]
     }
 ])
