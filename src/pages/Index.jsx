@@ -84,13 +84,14 @@ export default function Index() {
   };
   
   const images = [
+
     '../public/pc.jpg',
     '../public/banner1.png',
     '../public/aire.png',
     '../public/electronics.png',
     // Agrega aquí tus imágenes con sus nombres de archivos
-  ];
-  
+ ];
+ 
   const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
   const currentPhones = imagesPhones.slice(currentSlideCarousel2, currentSlideCarousel2 + imagesPorSlide);
   const imagesDesktop = moreViews.filter(item => item.type === "NOTEBOOK" || item.type === "DESKTOP");
