@@ -3,7 +3,6 @@ import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
 
-
 function NavBar() {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -47,7 +46,7 @@ function NavBar() {
  
 
   return (
-    <nav className="bg-[#007BFF] w-full h-[25vh]">
+    <nav className="bg-[#007BFF] w-full min-h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
         <Anchor to={'/'} ><img src="/logo2.png" alt="logo" className="hidden md:block w-[6rem] object-contain" /></Anchor>
         <div className="relative flex items-center">
@@ -57,7 +56,7 @@ function NavBar() {
           </span>
         </div>
         <div className='flex flex-col items-center'>
-          <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+          <svg className="w-6 h-6 text-[#ffc548]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
           </svg>
           <div className='hidden md:flex w-[8rem] justify-around'>
@@ -71,12 +70,14 @@ function NavBar() {
           </Anchor>
         </div>
         <div className='flex flex-col items-center'>
-          <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+          <svg className="w-6 h-6 text-[#ffc548]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
           </svg>
           <p className='hidden md:block text-[white]'>My shopping cart</p>
         </div>
-
+      </div>
+      <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
+        <p className='font-semibold'>CLICK <Anchor to={'/verifyAccount'} className='text-green'>HERE</Anchor> TO VERIFY YOUR ACCOUNT</p>
       </div>
       <div id='segunda seccion' className="bg-[#F5F5F5] h-[10vh] w-full flex items-center p-10">
         <div className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[30rem]" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
