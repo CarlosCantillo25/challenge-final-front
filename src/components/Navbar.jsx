@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
+import { useNavigate } from 'react-router';
 
 function NavBar() {
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const openDropdown = () => {
@@ -11,6 +13,23 @@ function NavBar() {
   const closeDropdown = () => {
     setIsDropdownOpen(false);
   };
+
+  function navigateToTVPage() {
+    navigate("/tv");
+  }
+  function navigateToPhonesPage() {
+    navigate("/phones");
+  }
+  function navigateToFrezeerPage() {
+    navigate("/freezer");
+  }
+  function navigateToAudioPage() {
+    navigate("/speakers");
+  }
+
+  function navigateToAirPage() {
+    navigate("/air");
+  }
 
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
@@ -49,23 +68,23 @@ function NavBar() {
           )}
         </div>
       <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
-        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+        <button onClick={navigateToTVPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/TV.png" alt="" />
           <p>TV</p>
         </button>
-        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+        <button onClick={navigateToPhonesPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/cell.png" alt="" />
           <p>Phones</p>
         </button>
-        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+        <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/freezer.png" alt="" />
           <p>Freezer</p>
         </button>
-        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+        <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/audio.png" alt="" />
-          <p>Audio</p>
+          <p>Speakers</p>
         </button>
-        <button className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+        <button onClick={navigateToAirPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
           <img className='h-[2rem]' src="/air.png" alt="" />
           <p>Air conditionet</p>
         </button>

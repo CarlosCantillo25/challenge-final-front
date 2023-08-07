@@ -4,6 +4,9 @@ import ProductDetail from "../src/pages/ProductDetail";
 import Register from "../src/pages/Register";
 import Login from "../src/pages/Login";
 import Index from "../src/pages/Index";
+import Tv from "../src/pages/Tv";
+import Phones from "../src/pages/Phones";
+import Speakers from "../src/pages/Speakers";
 
 const router = createBrowserRouter([
     {
@@ -13,6 +16,18 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Index />
+            },
+            {
+                path: '/tv',
+                element: <Tv />
+            },
+            {
+                path: '/phones',
+                element: <Phones />
+            },
+            {
+                path: '/speakers',
+                element: <Speakers />
             },
             {
                 path: '/ProductDetail',

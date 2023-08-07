@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setProduct } from '../redux/actions/product.js';
 import { useParams } from 'react-router-dom';
 import { api, apiUrl, endpoints } from '../utils/api.js';
-import { Link as Anchor } from 'react-router-dom';
+import { Link as Anchor, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -11,6 +11,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const ProductDetail = () => {
   const { _id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [cuota12, setCuota12] = useState(0);
   const [cuota6, setCuota6] = useState(0);
   const [cuota3, setCuota3] = useState(0);
@@ -18,8 +19,11 @@ const ProductDetail = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [isTechnicalModalOpen, setIsTechnicalModalOpen] = useState(true);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
-
   const product = useSelector((state) => state.product.product);
+
+  function navigateToHomePage() {
+    navigate("/");
+  }
 
   const fetchProductDetail = async () => {
     try {
@@ -499,7 +503,7 @@ const ProductDetail = () => {
       <div className='w-full flex flex-col items-center justify-center bg-white'>
         {product && (
           <div className='flex flex-row items-start text-sm md:text-md md:w-[80%] mt-4'>
-            <Anchor className='hover:text-sky-600 hover:font-semibold'>{product.category}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]'/><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.type}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]' /><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.title}</Anchor>
+            <Anchor onClick={navigateToHomePage} className='hover:text-sky-600 hover:font-semibold'>{product.category}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]'/><Anchor className='hover:text-sky-600 hover:font-semibold'>{product.type}</Anchor><img src="/left.png" className='h-[15px] md:h-[20px] mt-[3px]' /><p className='hover:text-sky-600 hover:font-semibold'>{product.title}</p>
           </div>
         )}
         {product && (
