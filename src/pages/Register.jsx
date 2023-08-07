@@ -35,7 +35,6 @@ export default function Register() {
             });
     }
 
-    const token = localStorage.getItem("token");
 
     return (
         <div className= /*bg-[#333] */"flex flex-col justify-between min-h-screen ">
