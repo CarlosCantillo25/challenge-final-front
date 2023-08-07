@@ -40,7 +40,7 @@ export default function Register() {
     return (
         <div className= /*bg-[#333] */"flex flex-col justify-between min-h-screen ">
             <div className= /*bg-[aqua]*/'p-[1rem] flex justify-center items-center min-h-[10vh] w-fullmax-sx:flex'>
-                <img src="/l4.png" alt="logo" className='w-[6rem] max-sx:w-[4.5rem]' />
+                <img src="/L4.png" alt="logo" className='w-[6rem] max-sx:w-[4.5rem]' />
                 <h1 className='text-[#448cdf] text-[2.5rem] font-bold max-sx:text-[1.3rem]'>CGGI TECH</h1>
             </div>
 

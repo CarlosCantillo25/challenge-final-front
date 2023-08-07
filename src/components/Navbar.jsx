@@ -40,6 +40,10 @@ function NavBar() {
     navigate("/Register");
   }
 
+  function backHome() {
+    navigate("/");
+  }
+
   return (
     <nav className="bg-[#007BFF] w-full h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
