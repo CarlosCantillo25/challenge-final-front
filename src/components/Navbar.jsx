@@ -127,9 +127,10 @@ function NavBar() {
         ) : (
           // Mostrar esto solo cuando el usuario esté logueado
           <div className='flex flex-col items-center'>
-            <img src={user?.photo} className="w-6 h-6" />
-            <div className='hidden md:flex w-[8rem] justify-around'>
-              <button onClick={navigateToLoginPage} className='text-[white]'>{user?.email}</button>|<button onClick={backHome} className='text-[white]'>  Sign Out</button>
+            <img src={user?.photo} className="h-10 rounded-full" />
+            <div className='hidden md:flex flex-col w-[8rem] justify-center items-center mt-2'>
+              <button onClick={navigateToLoginPage} className='text-[white] me-4'>{user?.email}</button>
+              <button onClick={backHome} className='text-[white]'>Sign Out</button>
             </div>
           </div>
         )}
