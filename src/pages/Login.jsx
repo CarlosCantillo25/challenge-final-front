@@ -18,14 +18,13 @@ export default function Register() {
     async function handleFormSubmit(e) {
         e.preventDefault();
 
-        let data = {
+        let dato = {
             email: inputEmail.current.value,
             password: inputPassword.current.value
         }
 
         try {
-            let { data } = await axios.post("http://localhost:8082/api/user/signin", data);
-            console.log(data);
+            let { data } = await axios.post("http://localhost:8082/api/user/signin", dato);
             const token = data.response?.token;
             localStorage.setItem("token", data.response?.token);
             localStorage.setItem("user", JSON.stringify(data.response?.user));
@@ -35,7 +34,6 @@ export default function Register() {
                 title: "Logged In!",
             });
             navigate("/");
-            console.log(data);
             console.log(token);
         } catch (error) {
             console.log(error);
