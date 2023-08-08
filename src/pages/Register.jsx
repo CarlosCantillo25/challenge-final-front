@@ -1,24 +1,27 @@
-import React from 'react';
+import { React, useState, useRef } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default function Register() {
+
     let inputEmail = useRef();
     let inputPassword = useRef();
+    let inputPhoto = useRef();
+    let inputLocation = useRef();
+
     let navigate = useNavigate();
 
     function handleFormSubmit(e) {
         e.preventDefault();
 
-        let data = {
-            email: inputEmail.current.value,
-            password: inputPassword.current.value
-        }
+        const formData = new FormData();
+        formData.append('email', inputEmail.current.value);
+        formData.append('photo', inputPhoto.current.files[0]);
+        formData.append('password', inputPassword.current.value);
+        formData.append('location', inputLocation.current.value);
 
-
-        axios.post("http://localhost:8082/api/user/register", data)
+        axios.post("http://localhost:8082/api/user/register", formData)
             .then((res) => {
                 navigate("/Login");
                 Swal.fire({
@@ -35,6 +38,12 @@ export default function Register() {
             });
     }
 
+    let [selectedFileName, setSelectedFileName] = useState('');
+
+    const handleFileChange = (e) => {
+        setSelectedFileName(e.target.files[0]?.name || '');
+    };
+
 
     return (
         <div className= /*bg-[#333] */"flex flex-col justify-between min-h-screen ">
@@ -49,14 +58,7 @@ export default function Register() {
                     <p className=' max-sx:px-8 text-center text-[1rem]  font-bold px-8'>Create your account and buy from wherever you are..</p>
 
                     <form onSubmit={(e) => handleFormSubmit(e)} encType='multipart/form-data' className='flex-col px-8 w-96 flex justify-center max-sx:w-[85%]'>
-                        {/* <label className="text-sm  pt-[1.5rem] font-bold">Name</label>
-                        <input
-                            type="text"
-                            placeholder="Name and Surname"
-                            ref={inputName}
-                            name="name"
-                            className="p-3 mb-1 border-2 border-[#448cdf] h-[2.4rem] rounded-lg"
-                        /> */}
+
                         <legend className="text-sm pt-[1.5rem] font-bold">Email</legend>
                         <input
                             type="text"
@@ -71,6 +73,33 @@ export default function Register() {
                             placeholder="6 characters"
                             ref={inputPassword}
                             name="password"
+                            className="p-3 mb-1 border-2 border-[#448cdf] h-[2.4rem] rounded-lg"
+                        />
+                        <legend className="text-sm pt-[1.5rem] font-bold">Photo</legend>
+                        <div className="relative">
+                            <input
+                                type="file"
+                                ref={inputPhoto}
+                                name="photo"
+                                className="absolute inset-0 opacity-0 cursor-pointer w-[25rem] h-full"
+                                onChange={handleFileChange}
+                            />
+                            <button
+                                type="button"
+                                className="w-[100%]  max-sx:w-[100%] p-3 mb-1 h-[2.4rem] rounded-lg bg-gradient-to-r from-[#378df0] to-[#a6cef8] text-white font-bold"
+                                onClick={handleFileChange}
+                            >
+                                Choose Photo
+                            </button>
+
+                        </div>
+                        <span className="text-center font-bold text-sm">{selectedFileName}</span>
+                        <legend className="text-sm pt-[1.5rem] font-bold">Location</legend>
+                        <input
+                            type="text"
+                            placeholder="location"
+                            ref={inputLocation}
+                            name="location"
                             className="p-3 mb-1 border-2 border-[#448cdf] h-[2.4rem] rounded-lg"
                         />
                         <label className='text-center p-[.5rem] '>
