@@ -24,6 +24,8 @@ import Index from "../src/pages/Index.jsx";
 import Kitchens from "../src/pages/Kitchens.jsx"
 import Blenders from "../src/pages/Blenders.jsx"
 import Laundrys from "../src/pages/Laundrys.jsx"
+import VerifyAccount from "../src/pages/VerifyAccount";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -120,7 +122,11 @@ const router = createBrowserRouter([
                         <Login />
                     </ProtectedRouter>
                 )
-            }
+            },
+            {
+                path: '/verifyAccount',
+                element:<VerifyAccount />
+            },
         ]
     }
 ])

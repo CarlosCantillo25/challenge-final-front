@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import GoogleLogin from 'react-google-login'
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { gapi } from "gapi-script"
+import { api, apiUrl, endpoints } from '../utils/api.js';
 
 export default function Register() {
+
+    const clientId = "770842422626-r3ft5ak40jijipm6elelj7dt5r3p6s31.apps.googleusercontent.com"
+
+    const [verificationSuccess, setVerificationSuccess] = useState(false)
+
     let inputEmail = useRef();
     let inputPassword = useRef();
     let navigate = useNavigate();
@@ -18,7 +26,7 @@ export default function Register() {
         }
 
 
-        axios.post("http://localhost:8082/api/user/register", data)
+        axios.post(apiUrl + endpoints.register, data)
             .then((res) => {
                 navigate("/Login");
                 Swal.fire({
@@ -35,7 +43,55 @@ export default function Register() {
             });
     }
 
-    const token = localStorage.getItem("token");
+    useEffect(() => {
+        gapi.load("client:auth2", ()=> {
+          gapi.auth2.init({ clientId: clientId })
+        })
+      }, [])
+
+    const responseSuccess = (res) => {
+        let data = {
+          email: res.profileObj.email,
+          photo: res.profileObj.imageUrl,
+          password: res.profileObj.googleId
+        }
+    
+        axios.post(apiUrl + endpoints.register, data)
+          .then(res => {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'New user creation successful!',
+              showConfirmButton: false,
+              timer: 1500
+          })
+          setVerificationSuccess(true)
+          navigate('/Login')
+          })
+          .catch(error => {
+          const err = error.response.data.messages
+          console.log(error)
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err || 'This email is already registered'
+          })
+        })
+      }
+
+        const responseGoogle = (res) => {
+            if (res.error === "popup_closed_by_user") {
+              // Mostrar una notificación o mensaje al usuario informando que el inicio de sesión fue cancelado.
+              Swal.fire({
+                icon: "info",
+                title: "Login canceled",
+                text: "The login process with Google was canceled by the user.",
+              });
+            } else {
+              console.log("Failed to sign in with Google:", res.error);
+            }
+          }   
+
 
     return (
         <div className= /*bg-[#333] */"flex flex-col justify-between min-h-screen ">
@@ -86,6 +142,14 @@ export default function Register() {
                             />
                         </div>
                     </form>
+                    <GoogleLogin
+                  className='w-[70%] md:w-[60%] flex justify-center'
+                  clientId={clientId}
+                  buttonText="Sign up with Google"
+                  onSuccess={responseSuccess}
+                  onFailure={responseGoogle}
+                  cookiePolicy={'single_host_origin'}
+                  />
                     <div className='max-sx:flex max-sx:flex-col flex flex-col justify-center items-center'>
                         <Link to="/login" className="">
                             Already have an account? <span className="text-blue-500">Log In</span>
