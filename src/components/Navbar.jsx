@@ -191,39 +191,6 @@ function NavBar() {
           <p>Air conditionet</p>
         </button>
       </div>
-
-        <div className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[30rem]" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
-          <span className="text-[gray] cursor-pointer font-semibold lg:text-2xl text-xl ms-[-40px] md:ms-0">CATEGORIES</span>
-          {isDropdownOpen && (
-            <div className="absolute mt-2 w-[35rem] bg-white border border-[#007BFF] rounded-md shadow-md z-10">
-              <p className="block px-4 py-2 text-[#007BFF] hover:bg-[#007BFF] hover:text-white">Select for category</p>
-              <a className="block px-4 py-2 text-[#007BFF] hover:bg-[#007BFF] hover:text-white">Example Category</a>
-            </div>
-          )}
-        </div>
-        <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
-          <button onClick={navigateToTVPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/TV.png" alt="" />
-            <p>TV</p>
-          </button>
-          <button onClick={navigateToPhonesPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/cell.png" alt="" />
-            <p>Phones</p>
-          </button>
-          <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/freezer.png" alt="" />
-            <p>Fridges</p>
-          </button>
-          <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/audio.png" alt="" />
-            <p>Audio</p>
-          </button>
-          <button onClick={navigateToAirPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/air.png" alt="" />
-            <p>Air conditionet</p>
-          </button>
-        </div>
-
       </div>
     </nav>
   );

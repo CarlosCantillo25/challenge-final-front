@@ -63,10 +63,12 @@ export default function Register() {
                 timer: 1500,
               });
       
-              const { user, photo, token } = response.data.response;
+              const { user, token } = response.data.response;
+
               LS.add('token', token)
+              LS.add('user', user)
               dispatch(setUser(user));
-              dispatch(setPhoto(photo));
+              dispatch(setPhoto(user.photo));
       
               navigate('/');
             } else {
