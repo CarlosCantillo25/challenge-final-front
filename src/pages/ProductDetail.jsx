@@ -422,7 +422,7 @@ const ProductDetail = () => {
                         </div>
                         <div className='flex flex-row justify-between m-4 w-full bg-slate-200'>
                         <p className='font-semibold text-xl'>RAM</p>
-                        <p className='lg:me-[16%] w-[40%]'>{product.description.RAM}</p>
+                        <p className='lg:me-[16%] w-[40%]'>{product.description.ram}</p>
                         </div>
                       </div>
                     </div>       
