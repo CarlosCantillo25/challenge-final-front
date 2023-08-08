@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
-import { Link as Anchor } from 'react-router-dom';
+
+import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
+import DesplegableCat from './DesplegableCat';
 
 function NavBar() {
 
   const navigate = useNavigate();
+
   const [verificationCode, setVerificationCode] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
@@ -24,6 +27,7 @@ function NavBar() {
   const closeVerified = () => {
     setIsVerified(false);
   };
+
 
   function navigateToTVPage() {
     navigate("/TV");
@@ -163,6 +167,31 @@ function NavBar() {
               </div>
           )}
       <div id='segunda seccion' className="bg-[#F5F5F5] h-[10vh] w-full flex items-center p-10">
+
+       <DesplegableCat/>
+      <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
+        <button onClick={navigateToTVPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/TV.png" alt="" />
+          <p>TV</p>
+        </button>
+        <button onClick={navigateToPhonesPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/cell.png" alt="" />
+          <p>Phones</p>
+        </button>
+        <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/freezer.png" alt="" />
+          <p>Fridges</p>
+        </button>
+        <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/audio.png" alt="" />
+          <p>Audio</p>
+        </button>
+        <button onClick={navigateToAirPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/air.png" alt="" />
+          <p>Air conditionet</p>
+        </button>
+      </div>
+
         <div className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[30rem]" onMouseEnter={openDropdown} onMouseLeave={closeDropdown}>
           <span className="text-[gray] cursor-pointer font-semibold lg:text-2xl text-xl ms-[-40px] md:ms-0">CATEGORIES</span>
           {isDropdownOpen && (
@@ -194,6 +223,7 @@ function NavBar() {
             <p>Air conditionet</p>
           </button>
         </div>
+
       </div>
     </nav>
   );

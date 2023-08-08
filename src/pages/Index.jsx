@@ -144,7 +144,7 @@ export default function Index() {
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel2 + index + 1}`}
-        className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
+        className="mx-auto w-[10rem] h-[10rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
@@ -186,7 +186,7 @@ export default function Index() {
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel3 + index + 1}`}
-        className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
+        className="mx-auto w-[10rem] h-[12rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
@@ -227,7 +227,7 @@ export default function Index() {
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel4 + index + 1}`}
-        className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
+        className="mx-auto w-[13rem] h-[10rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
@@ -268,7 +268,7 @@ export default function Index() {
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel5 + index + 1}`}
-        className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
+        className="mx-auto w-[10rem] h-[11rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
@@ -309,7 +309,7 @@ export default function Index() {
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel6 + index + 1}`}
-        className="mx-auto w-[8rem] h-[8rem] object-contain py-[1rem]"
+        className="mx-auto w-[12rem] h-[12rem] object-contain py-[1rem]"
       /> 
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
