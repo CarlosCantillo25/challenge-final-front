@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
+import { api, apiUrl, endpoints } from '../utils/api';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions.js';
 import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
 import DesplegableCat from './DesplegableCat';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function NavBar() {
 const navigate = useNavigate();
@@ -103,6 +106,10 @@ useEffect(() => {
     navigate("/");
   }
 
+  function navigateToControlPanel() {
+    navigate("/ControlPanel");
+  }
+ 
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -122,7 +129,7 @@ useEffect(() => {
     event.preventDefault();
 
     try {
-      const response = await axios.get(apiUrl + "auth/verify/" + verificationCode);
+      const response = await axios.get(apiUrl + endpoints.verify + verificationCode);
 
       if (response.status === 200) {
         Swal.fire({
@@ -132,8 +139,8 @@ useEffect(() => {
           showConfirmButton: false,
           timer: 3000,
         });
-
-        navigate('/signin')
+        closeVerified()
+        navigate('/')
 
       } else {
         Swal.fire({
@@ -221,12 +228,23 @@ useEffect(() => {
               <button onClick={navigateToLoginPage} className='text-[white]'>Log in</button>|<button onClick={navigateToRegisterPage} className='text-[white]'>Register</button>
             </div>
           </div>
+        ) : isLoggedIn() && user.role === 2 ? (
+          // Mostrar esto solo cuando el usuario esté logueado
+          <div className='flex flex-col items-center'>
+            <div className='hidden md:flex flex-col justify-center items-center mt-2'>
+              <button onClick={navigateToControlPanel} className='p-2 text-[white] border-2 rounded flex justify-center items-center'>
+                <img src={user?.photo} className="h-10 rounded-full" />
+                <p>{user?.email}</p>
+              </button>
+              <button onClick={backHome} className='text-[white]'>Sign Out</button>
+            </div>
+          </div>
         ) : (
           // Mostrar esto solo cuando el usuario esté logueado
           <div className='flex flex-col items-center'>
             <img src={user?.photo} className="h-10 rounded-full" />
             <div className='hidden md:flex flex-col w-[8rem] justify-center items-center mt-2'>
-              <button onClick={navigateToLoginPage} className='text-[white] me-4'>{user?.email}</button>
+              <p className='text-[white] me-4'>{user?.email}</p>
               <button onClick={backHome} className='text-[white]'>Sign Out</button>
             </div>
           </div>

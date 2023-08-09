@@ -6,5 +6,7 @@ export const endpoints = {
     product: "products/",
     login: "user/signin",
     register: "user/register",
+    verify: "user/verify/",
+    createdProduct: "products/created",
     google: "user/google",
 }

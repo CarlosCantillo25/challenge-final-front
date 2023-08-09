@@ -732,9 +732,9 @@ const ProductDetail = () => {
                             <p className='font-bold text-xl mb-1'>{product.title}</p>
                             <p className='font-semibold text-xl mb-2'>{formatCurrency(product.price)}</p>
                             <p className='font-bold text-sm'>Our banking promotions!</p>
-                            <p className='flex justify-between mt-2'><span className='font-bold me-[-8px]'>Now 12</span> fixed installments of {formatCurrency(cuota12)} <img src="/ahora12.png" className='w-[40px]' /></p>
-                            <p className='flex justify-between'><span className='font-bold'>Now 6</span> fixed installments of {formatCurrency(cuota6)} <img src="/ahora6.png" className='w-[40px]' /></p>
-                            <p className='flex justify-between mb-2'><span className='font-bold'>Now 3</span> fixed installments of {formatCurrency(cuota3)} <img src="/ahora3.png" className='w-[40px]' /></p>
+                            <p className='flex items-start mt-2'>Pay in 12 installments of {formatCurrency(cuota12)}</p>
+                            <p className='flex items-start'>Pay in 6 installments of {formatCurrency(cuota6)}</p>
+                            <p className='flex items-start mb-2'>Pay in 3 installments of{formatCurrency(cuota3)}</p>
                             <p className='text-sm text-sky-700 mb-2'>See all payment methods</p>
                         </div>
                         <div className='mt-2 border-b-2'>

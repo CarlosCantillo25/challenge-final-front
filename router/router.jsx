@@ -1,20 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRouter from "./ProtectedRouter";
-import {
-    Main,
-    ProductDetail,
-    Register,
-    Login,
-    Tv,
-    Phones,
-    Speakers,
-    Air,
-    Fridge,
-   Headphones,
-   Notebooks,
-   Microphones,
-   Cameras
-} from "./index.js";
+import { Main, ProductDetail, Register, Login, Tv, Phones, Speakers, Air, Fridge, Headphones, Notebooks, Microphones, Cameras } from "./index.js";
 import Tabs from "../src/pages/Tabs";
 import Desktops from "../src/pages/Desktops";
 import Chairs from "../src/pages/Chairs";
@@ -24,8 +10,21 @@ import Index from "../src/pages/Index.jsx";
 import Kitchens from "../src/pages/Kitchens.jsx"
 import Blenders from "../src/pages/Blenders.jsx"
 import Laundrys from "../src/pages/Laundrys.jsx"
-import VerifyAccount from "../src/pages/VerifyAccount";
+
+import ControlPanel from "../src/pages/ControlPanel.jsx";
+import AddProduct from "../src/pages/AddProduct.jsx"
+import ModifyProduct from "../src/pages/ModifyProduct.jsx"
+import DeleteProduct from "../src/pages/DeleteProduct.jsx"
+import RemoveAdmin from "../src/pages/RemoveAdmin.jsx"
+import CreateAdmin from "../src/pages/CreateAdmin.jsx"
+import GrantPermissions from "../src/pages/GrantPermissions.jsx"
+import RemovePermissions from "../src/pages/RemovePermissions.jsx"
+import GoodReviews from "../src/pages/GoodReviews.jsx"
+import BadReviews from "../src/pages/BadReviews.jsx"
+import AllReviews from "../src/pages/AllReviews.jsx"
+
 import ResultProducts from "../src/pages/ResultProducts";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -128,8 +127,48 @@ const router = createBrowserRouter([
                 )
             },
             {
-                path: '/verifyAccount',
-                element:<VerifyAccount />
+                path: '/ControlPanel',
+                element:<ControlPanel />
+            },
+            {
+                path: '/AddProduct',
+                element: <AddProduct/>
+            },
+            {
+                path: '/ModifyProduct',
+                element: <ModifyProduct/>
+            },
+            {
+                path: '/DeleteProduct',
+                element: <DeleteProduct/>
+            },
+            {
+                path: '/RemoveAdmin',
+                element: <RemoveAdmin/>
+            },
+            {
+                path: '/CreateAdmin',
+                element: <CreateAdmin/>
+            },
+            {
+                path: '/GrantPermissions',
+                element: <GrantPermissions/>
+            },
+            {
+                path: '/RemovePermissions',
+                element: <RemovePermissions/>
+            },
+            {
+                path: '/GoodReviews',
+                element: <GoodReviews/>
+            },
+            {
+                path: '/BadReviews',
+                element: <BadReviews/>
+            },
+            {
+                path: '/AllReviews',
+                element: <AllReviews/>
             },
         ]
     }
