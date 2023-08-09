@@ -1,22 +1,28 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link as Anchor } from 'react-router-dom';
 
 export default function ResultProducts() {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const searchQuery = queryParams.get('search');
+  const read_products = useSelector((store) => store.products.products);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const products = useSelector((store) => store.products.products);
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  useEffect(() => {
+    // Obtener IDs de productos guardados en "search"
+    const savedSearch = localStorage.getItem('search');
+    const savedSearchTerm = localStorage.getItem('searchTerm');
 
-  return (
+    if (savedSearch) {
+      const parsedMatchingProductIds = JSON.parse(savedSearch);
+      setSearchQuery(savedSearchTerm);
+
+      // Filtrar los productos a mostrar en los resultados de búsqueda
+      const productsToShow = read_products.filter(product => parsedMatchingProductIds.includes(product._id));
+      setFilteredProducts(productsToShow);
+    }
+  }, [ read_products,filteredProducts]); 
+  
+return (
     <main className='bg-[white] w-full h-auto'>
       <div className='flex justify-center'>
         <div className='w-[80%]'>
