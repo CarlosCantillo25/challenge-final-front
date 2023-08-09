@@ -8,5 +8,4 @@ export const endpoints = {
     register: "user/register",
     verify: "user/verify/",
     createdProduct: "products/created",
-    google: "user/google",
 }
