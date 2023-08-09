@@ -10,7 +10,7 @@ export default function Index() {
   }, [dispatch]);
 
   const read_products = useSelector((store) => store.products.products);
-  const moreViews = read_products.filter((elemento) => elemento.Moreview === true);
+  const moreViews = read_products?.filter((elemento) => elemento.Moreview === true);
   const [currentSlideCarousel1, setCurrentSlideCarousel1] = useState(0);
   const [currentSlideCarousel2, setCurrentSlideCarousel2] = useState(0);
   const [currentSlideCarousel3, setCurrentSlideCarousel3] = useState(0);
@@ -112,7 +112,6 @@ const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.typ
     // Clean up interval when component unmounts or when currentSlideCarousel1 changes
     return () => clearInterval(intervalId);
   }, [currentSlideCarousel1]);
-
   
   return (
     <main className='bg-[white] w-full h-auto'>
@@ -195,6 +194,7 @@ const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.typ
   </svg>
   {currentDesktop.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
+
       <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
@@ -275,8 +275,10 @@ const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.typ
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
+
   {currentAudio.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
+
       <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
@@ -316,8 +318,10 @@ const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.typ
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
+
   {currentElectro.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
+
       <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
