@@ -10,7 +10,7 @@ export default function Index() {
   }, [dispatch]);
 
   const read_products = useSelector((store) => store.products.products);
-  const moreViews = read_products.filter((elemento) => elemento.Moreview === true);
+  const moreViews = read_products?.filter((elemento) => elemento.Moreview === true);
   const [currentSlideCarousel1, setCurrentSlideCarousel1] = useState(0);
   const [currentSlideCarousel2, setCurrentSlideCarousel2] = useState(0);
   const [currentSlideCarousel3, setCurrentSlideCarousel3] = useState(0);
@@ -83,14 +83,14 @@ export default function Index() {
   
   const images = [
 
-    '/pc.jpg',
-    '/banner1.png',
-    '/aire.png',
-    '/electronics.png',
+    '/banner3.png',
+    '/applebanner.png',
+    '/bannertv.png',
+    '/bannerAppliances.png'
     // Agrega aquí tus imágenes con sus nombres de archivos
  ];
  
-  const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
+const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
   const currentPhones = imagesPhones.slice(currentSlideCarousel2, currentSlideCarousel2 + imagesPorSlide);
   const imagesDesktop = moreViews.filter(item => item.type === "NOTEBOOK" || item.type === "DESKTOP");
   const currentDesktop = imagesDesktop.slice(currentSlideCarousel3, currentSlideCarousel3 + imagesPorSlide);
@@ -100,14 +100,26 @@ export default function Index() {
   const currentAudio = imagesAudio.slice(currentSlideCarousel5, currentSlideCarousel5 + imagesPorSlide);
   const imagesElectro = moreViews.filter(item => item.type === "Fridge" || item.type === "Air" || item.type === "Kitchen" || item.type === "Blender" || item.type === "Laundry");
   const currentElectro= imagesElectro.slice(currentSlideCarousel6, currentSlideCarousel6 + imagesPorSlide);
+  const autoplayInterval = 3000; // 3 segundos
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentSlideCarousel1((prevIndex) =>
+        prevIndex + 1 < images.length ? prevIndex + 1 : 0
+      );
+    }, autoplayInterval);
+
+    // Clean up interval when component unmounts or when currentSlideCarousel1 changes
+    return () => clearInterval(intervalId);
+  }, [currentSlideCarousel1]);
   
   return (
     <main className='bg-[white] w-full h-auto'>
-      <div className="relative w-full h-[60vh] bg-[#e6e6e6] ">
+    <div className="relative w-full h-[60vh] bg-[#e6e6e6] ">
         <img
           src={images[currentSlideCarousel1]}
           alt={`Slide ${currentSlideCarousel1 + 1}`}
-          className="w-full h-[60vh] object-contain"
+          className="w-full h-[60vh] object-cover"
         />
         <div className="absolute bottom-0 left-0 right-0 flex justify-center py-2">
           {images.map((_, index) => (
@@ -124,8 +136,8 @@ export default function Index() {
 {/* ESTA ES LA SECCION 2 DONDE VAN LOS CARROUSEL MULTIPLES*/}
       <div className="relative w-full  flex px-[2rem] py-[1rem] flex-col justify-center  bg-[#e6e6e6]">
 {/* AQUI VA EL PRIMER CARROUSEL MULTIPLE*/}        
-      <div className='py-[1rem]'>
-        <p className='text-[1.25rem]'>More views on Phones & tabs</p>
+      <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+        <p className='text-[1.5rem]'>More views on Phones & tabs</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
@@ -139,17 +151,17 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentPhones.map((item, index) => (
-  <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+  <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
     <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel2 + index + 1}`}
-        className="mx-auto w-[10rem] h-[10rem] object-contain py-[1rem]"
+        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
       <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500">$ {item.price}</p>
+      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
@@ -166,8 +178,8 @@ export default function Index() {
 </div>
 
 {/* AQUI VA EL SEGUNDO CARROUSEL MULTIPLE*/} 
-<div className='py-[1rem]'>
-        <p className='text-[1.25rem]'>More views on Desktops & Notebooks</p>
+<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+        <p className='text-[1.5rem]'>More views on Desktops & Notebooks</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
@@ -181,17 +193,18 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentDesktop.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
+
       <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel3 + index + 1}`}
-        className="mx-auto w-[10rem] h-[12rem] object-contain py-[1rem]"
+        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
       <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500">$ {item.price}</p>
+      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
@@ -207,8 +220,8 @@ export default function Index() {
   </svg>
 </div>
 {/* AQUI VA EL TERCER CARROUSEL MULTIPLE*/} 
-<div className='py-[1rem]'>
-        <p className='text-[1.25rem]'>More views on Gamers products</p>
+<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+        <p className='text-[1.5rem]'>More views on Gamers</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
@@ -222,17 +235,17 @@ export default function Index() {
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
   {currentGamers.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
       <Anchor to={`/products/${item._id}`} >
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel4 + index + 1}`}
-        className="mx-auto w-[13rem] h-[10rem] object-contain py-[1rem]"
+        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
       <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500">$ {item.price}</p>
+      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
@@ -248,8 +261,8 @@ export default function Index() {
   </svg>
 </div> 
 {/* AQUI VA EL CUARTO CARROUSEL MULTIPLE*/}  
-<div className='py-[1rem]'>
-        <p className='text-[1.25rem]'>More views on Audio & Video</p>
+<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+        <p className='text-[1.5rem]'>More views on Audio & Video</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
@@ -262,18 +275,20 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
+
   {currentAudio.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
+
       <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel5 + index + 1}`}
-        className="mx-auto w-[10rem] h-[11rem] object-contain py-[1rem]"
+        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
       />  
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
       <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500">$ {item.price}</p>
+      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}
@@ -289,8 +304,8 @@ export default function Index() {
   </svg>
 </div>
 {/* AQUI VA EL QUINTO CARROUSEL MULTIPLE*/}  
-<div className='py-[1rem]'>
-        <p className='text-[1.25rem]'>More views on Electrodomestics</p>
+<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+        <p className='text-[1.5rem]'>More views on Appliances</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
   <svg
@@ -303,18 +318,20 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
+
   {currentElectro.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
+    <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
+
       <Anchor to={`/products/${item._id}`}>
       <img
         src={item.cover_photo[0]}
         alt={`Slide ${currentSlideCarousel6 + index + 1}`}
-        className="mx-auto w-[12rem] h-[12rem] object-contain py-[1rem]"
+        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
       /> 
       </Anchor>
       <h3 className="text-center text-gray-800">{item.brand}</h3>
       <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500">$ {item.price}</p>
+      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
       <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
     </div>
   ))}

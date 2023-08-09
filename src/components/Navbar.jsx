@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { api, apiUrl, endpoints } from '../utils/api';
+import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import productsActions from '../redux/actions/productsActions.js';
 import { Link as Anchor } from "react-router-dom";
 import { useNavigate } from 'react-router';
 import DesplegableCat from './DesplegableCat';
@@ -8,12 +11,55 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function NavBar() {
+const navigate = useNavigate();
+const dispatch = useDispatch();
+const read_products = useSelector((store) => store.products.products);
+console.log(read_products);
+const [verificationCode, setVerificationCode] = useState("");
+const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+const [isVerified, setIsVerified] = useState(false);
+const [searchTerm, setSearchTerm] = useState("");
+const [searchResults, setSearchResults] = useState([]);
+const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const navigate = useNavigate();
 
-  const [verificationCode, setVerificationCode] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
+  
+const performSearch = () => {
+  if (searchTerm === "") {
+    setSearchResults([]);
+  } else {
+    const filtered = read_products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())||
+      product.brand.toLowerCase().includes(searchTerm.toLowerCase())||
+      product.type.toLowerCase().includes(searchTerm.toLowerCase())||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(filtered);
+  }
+};
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+
+const handleSearchClick = () => {
+  if (searchTerm) {
+    
+    closeModal()
+    navigate(`/ResultProducts?search=${encodeURIComponent(searchTerm)}`);
+  }
+};
+
+const handleEnterKey = (event) => {
+  if (event.key === "Enter" && searchTerm) {
+    closeModal()
+    navigate(`/ResultProducts?search=${encodeURIComponent(searchTerm)}`);
+  }
+};
+
+
+useEffect(() => {
+    dispatch(productsActions.read_products());
+  }, [dispatch]);
 
   const openDropdown = () => {
     setIsDropdownOpen(true);
@@ -112,22 +158,70 @@ function NavBar() {
       });
     }
   }
+  const handleInputBlur = () => {
+    setIsModalOpen(false);
+  };
+  useEffect(() => {
+    performSearch();
+  }, [searchTerm]);
 
+  
   return (
     <nav className="bg-[#007BFF] w-full min-h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
-        <Anchor to={'/'} ><img src="/logo2.png" alt="logo" className="hidden md:block w-[6rem] object-contain" /></Anchor>
+        <Anchor to={'/'} ><img src="/logonav.png" alt="logo" className="hidden md:block w-[6.8rem] object-contain" /></Anchor>
         <div className="relative flex items-center">
-          <input type="text" placeholder="Find what you are looking for" className="md:w-[20rem] lg:w-[30rem] h-[2.5rem] rounded-[5px] pl-[1rem] pr-[3rem] bg-white border-[#007BFF] focus:ring-[#007BFF] focus:shadow-[#007BFF] outline-none" />
-          <span className="absolute right-[1rem] md:right-[3rem] top-[50%] transform -translate-y-1/2 text-[#007BFF]">
-            <AiOutlineSearch size={24} />
-          </span>
-        </div>
+        <input
+        
+  type="text"
+  placeholder="Find what you are looking for"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  onBlur={handleInputBlur}
+  onKeyDown={handleEnterKey}
+  
+  className="md:w-[20rem] lg:w-[30rem] h-[2.5rem] rounded-[5px] pl-[1rem] pr-[3rem] bg-white border-[#007BFF] focus:ring-[#007BFF] focus:shadow-[#007BFF] outline-none"
+/>
+
+<span
+  className="absolute right-[1rem] md:right-[3rem] top-[50%] transform -translate-y-1/2 text-[#007BFF] cursor-pointer"
+  onClick={() => {
+    setIsModalOpen(true);
+    handleSearchClick();
+  }}
+>
+  <AiOutlineSearch size={24} />
+</span>
+
+{searchResults.length > 0 && (
+  <div className="absolute top-full left-0 w-full bg-white shadow-md p-2 z-10 modal-content">
+    {searchResults.slice(0, 5).map((product) => (
+      <Anchor key={product._id} to={`/products/${product._id}`} className="flex items-center gap-2 p-2" onClick={closeModal}>
+        <img
+          src={product.cover_photo[0]}
+          alt={product.title}
+          className="w-12 h-12 object-cover"
+        />
+        <p>{product.title}</p>
+      </Anchor>
+    ))}
+    {searchResults.length > 5 && (
+      <div className="text-center mt-3">
+        <Anchor to="/ResultProducts" className="text-blue-500 hover:underline" onClick={closeModal}>
+          More Views
+        </Anchor>
+      </div>
+    )}
+  </div>
+)}
+
+</div>
+        <div className=' flex ml-[5rem] w-[20rem] justify-around'>
 
         {!isLoggedIn() ? (
           // Mostrar esto solo cuando el usuario no esté logueado
-          <div className='flex flex-col items-center'>
-            <svg className="w-6 h-6 text-[#ffc548] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+          <div  className='flex flex-col items-center '>
+            <svg className="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
             </svg>
             <div className='hidden md:flex w-[8rem] justify-around'>
@@ -156,7 +250,7 @@ function NavBar() {
           </div>
         )}
         <div className='flex flex-col items-center'>
-          <svg className="w-6 h-6 text-[#ffc548]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+          <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
           </svg>
           <p className='hidden md:block text-[white]'>My shopping cart</p>
@@ -183,7 +277,8 @@ function NavBar() {
                   </form>
               </div>
           )}
-      <div id='segunda seccion' className="bg-[#F5F5F5] h-[10vh] w-full flex items-center p-10">
+        </div>
+      <div id='segunda seccion' className="bg-[#FFFBEB] h-[10vh] w-full flex items-center p-10">
 
        <DesplegableCat/>
       <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
@@ -208,8 +303,8 @@ function NavBar() {
           <p>Air conditionet</p>
         </button>
       </div>
-      </div>
-    </nav>
+</div>
+</nav>
   );
 }
 

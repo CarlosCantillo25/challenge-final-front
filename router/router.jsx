@@ -10,6 +10,7 @@ import Index from "../src/pages/Index.jsx";
 import Kitchens from "../src/pages/Kitchens.jsx"
 import Blenders from "../src/pages/Blenders.jsx"
 import Laundrys from "../src/pages/Laundrys.jsx"
+
 import ControlPanel from "../src/pages/ControlPanel.jsx";
 import AddProduct from "../src/pages/AddProduct.jsx"
 import ModifyProduct from "../src/pages/ModifyProduct.jsx"
@@ -21,6 +22,8 @@ import RemovePermissions from "../src/pages/RemovePermissions.jsx"
 import GoodReviews from "../src/pages/GoodReviews.jsx"
 import BadReviews from "../src/pages/BadReviews.jsx"
 import AllReviews from "../src/pages/AllReviews.jsx"
+
+import ResultProducts from "../src/pages/ResultProducts";
 
 const router = createBrowserRouter([
     {
@@ -98,6 +101,10 @@ const router = createBrowserRouter([
             {
                 path: '/Blenders',
                 element: <Blenders/>
+            },
+            {
+                path: '/ResultProducts',
+                element:  <ResultProducts/>
             },
             {
                 path: '/products/:id',
