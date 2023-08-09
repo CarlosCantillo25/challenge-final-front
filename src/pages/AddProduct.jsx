@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProduct } from '../redux/actions/product.js';
+import { api, apiUrl, endpoints } from '../utils/api.js';
 
 export default function AddProduct() {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -6,13 +9,17 @@ export default function AddProduct() {
   const [additionalFields, setAdditionalFields] = useState(null);
   const [additionalFieldsType, setAdditionalFieldsType] = useState(null);
 
+  const products = useSelector((state) => state.products.products);
+
+  console.log(products)
+
   const handleCategoryChange = (event) => {
     const category = event.target.value;
     setSelectedCategory(category);
 
     if (category === '1') {
       setAdditionalFields(
-        <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeChange}>
+        <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeTech}>
             <option value="" disabled selected>Select type</option>
             <option value="1">Phones</option>
             <option value="2">Tabs</option>
@@ -22,7 +29,7 @@ export default function AddProduct() {
       );
     } else if (category === '2') {
       setAdditionalFields(
-        <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeChange}>
+        <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeTv}>
           <option value="" disabled selected>Select type</option>
           <option value="tv">TV</option>
           <option value="2">Headphones</option>
@@ -32,7 +39,7 @@ export default function AddProduct() {
       );
     } else if (category === '3') {
       setAdditionalFields(
-        <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeChange}>
+        <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeGamer}>
           <option value="" disabled selected>Select type</option>
           <option value="1">Gamer's chairs</option>
           <option value="2">Mouses</option>
@@ -41,7 +48,7 @@ export default function AddProduct() {
       );
     } else if (category === '4') {
     setAdditionalFields(
-      <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeChange}>
+      <select className="w-full p-2 border rounded mb-2" name="type" onChange={handleTypeElectro}>
         <option value="" disabled selected>Select type</option>
         <option value="1">Fridges</option>
         <option value="2">Kitchen</option>
@@ -55,11 +62,11 @@ export default function AddProduct() {
     }
   };
 
-  const handleTypeChange = (event) => {
+  const handleTypeTech = (event) => {
     const type = event.target.value;
     setSelectedType(type);
 
-    if (type === 'tv') {
+    if (type === '1') {
       setAdditionalFieldsType(
         <div>
           <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
@@ -153,6 +160,304 @@ export default function AddProduct() {
       setAdditionalFieldsType(null);
     }
   };
+
+  const handleTypeTv = (event) => {
+    const type = event.target.value;
+    setSelectedType(type);
+
+    if (type === '1') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2 className="text-xl font-semibold mb-2">Technical characteristics</h2>
+          <h1 className="text-lg font-semibold mb-2">Screen</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Inches" placeholder="Inches" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Resolution" placeholder="Resolution" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="ScreenFormat" placeholder="Screen Format" />
+          <h1 className="text-lg font-semibold mb-2">General Features</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="SmartTV" placeholder="SmartTV" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Processor" placeholder="Processor" />
+          <h1 className="text-lg font-semibold mb-2">Connectivity</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsHDMI" placeholder="Inputs HDMI" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsUSB" placeholder="Inputs USB" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InternetConnection" placeholder="Internet Connection" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NFC" placeholder="NFC" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HeadphoneJack" placeholder="Headphone Jack" />
+          <h1 className="text-lg font-semibold mb-2">Sound</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="AudioFormats" placeholder="Audio Formats" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NumberOfSpeakers" placeholder="Number Of Speakers" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Power" placeholder="Power" />
+          <h1 className="text-lg font-semibold mb-2">Dimensions</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="High" placeholder="High" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Width" placeholder="Width" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Depth" placeholder="Depth" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HighBased" placeholder="High Based" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="WidthWithBase" placeholder="Width With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="DepthWithBase" placeholder="Depth With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="VESAmeasure" placeholder="VESA Measure" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Weight" placeholder="Weight" />
+          <h1 className="text-lg font-semibold mb-2">Model</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Model" placeholder="Model" />
+          <h1 className="text-lg font-semibold mb-2">Origin</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Origin" placeholder="High" />
+        </div>
+      );
+    } else if (type === '2') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2 className="text-xl font-semibold mb-2">Technical characteristics</h2>
+          <h1 className="text-lg font-semibold mb-2">Screen</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Inches" placeholder="Inches" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Resolution" placeholder="Resolution" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="ScreenFormat" placeholder="Screen Format" />
+          <h1 className="text-lg font-semibold mb-2">General Features</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="SmartTV" placeholder="SmartTV" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Processor" placeholder="Processor" />
+          <h1 className="text-lg font-semibold mb-2">Connectivity</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsHDMI" placeholder="Inputs HDMI" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsUSB" placeholder="Inputs USB" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InternetConnection" placeholder="Internet Connection" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NFC" placeholder="NFC" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HeadphoneJack" placeholder="Headphone Jack" />
+          <h1 className="text-lg font-semibold mb-2">Sound</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="AudioFormats" placeholder="Audio Formats" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NumberOfSpeakers" placeholder="Number Of Speakers" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Power" placeholder="Power" />
+          <h1 className="text-lg font-semibold mb-2">Dimensions</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="High" placeholder="High" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Width" placeholder="Width" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Depth" placeholder="Depth" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HighBased" placeholder="High Based" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="WidthWithBase" placeholder="Width With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="DepthWithBase" placeholder="Depth With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="VESAmeasure" placeholder="VESA Measure" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Weight" placeholder="Weight" />
+          <h1 className="text-lg font-semibold mb-2">Model</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Model" placeholder="Model" />
+          <h1 className="text-lg font-semibold mb-2">Origin</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Origin" placeholder="High" />
+        </div>
+      );
+    } else if (type === '3') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2>Technical characteristics</h2>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="brand" placeholder="Brand" />
+        </div>
+      );
+    } else if (type === '4') {
+    setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2>Technical characteristics</h2>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="brand" placeholder="Brand" />
+        </div>
+    );
+    } else {
+      setAdditionalFieldsType(null);
+    }
+  };
+
+  const handleTypeGamer = (event) => {
+    const type = event.target.value;
+    setSelectedType(type);
+
+    if (type === '1') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2 className="text-xl font-semibold mb-2">Technical characteristics</h2>
+          <h1 className="text-lg font-semibold mb-2">Screen</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Inches" placeholder="Inches" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Resolution" placeholder="Resolution" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="ScreenFormat" placeholder="Screen Format" />
+          <h1 className="text-lg font-semibold mb-2">General Features</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="SmartTV" placeholder="SmartTV" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Processor" placeholder="Processor" />
+          <h1 className="text-lg font-semibold mb-2">Connectivity</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsHDMI" placeholder="Inputs HDMI" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsUSB" placeholder="Inputs USB" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InternetConnection" placeholder="Internet Connection" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NFC" placeholder="NFC" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HeadphoneJack" placeholder="Headphone Jack" />
+          <h1 className="text-lg font-semibold mb-2">Sound</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="AudioFormats" placeholder="Audio Formats" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NumberOfSpeakers" placeholder="Number Of Speakers" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Power" placeholder="Power" />
+          <h1 className="text-lg font-semibold mb-2">Dimensions</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="High" placeholder="High" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Width" placeholder="Width" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Depth" placeholder="Depth" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HighBased" placeholder="High Based" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="WidthWithBase" placeholder="Width With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="DepthWithBase" placeholder="Depth With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="VESAmeasure" placeholder="VESA Measure" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Weight" placeholder="Weight" />
+          <h1 className="text-lg font-semibold mb-2">Model</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Model" placeholder="Model" />
+          <h1 className="text-lg font-semibold mb-2">Origin</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Origin" placeholder="High" />
+        </div>
+      );
+    } else if (type === '2') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2 className="text-xl font-semibold mb-2">Technical characteristics</h2>
+          <h1 className="text-lg font-semibold mb-2">Screen</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Inches" placeholder="Inches" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Resolution" placeholder="Resolution" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="ScreenFormat" placeholder="Screen Format" />
+          <h1 className="text-lg font-semibold mb-2">General Features</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="SmartTV" placeholder="SmartTV" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Processor" placeholder="Processor" />
+          <h1 className="text-lg font-semibold mb-2">Connectivity</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsHDMI" placeholder="Inputs HDMI" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsUSB" placeholder="Inputs USB" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InternetConnection" placeholder="Internet Connection" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NFC" placeholder="NFC" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HeadphoneJack" placeholder="Headphone Jack" />
+          <h1 className="text-lg font-semibold mb-2">Sound</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="AudioFormats" placeholder="Audio Formats" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NumberOfSpeakers" placeholder="Number Of Speakers" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Power" placeholder="Power" />
+          <h1 className="text-lg font-semibold mb-2">Dimensions</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="High" placeholder="High" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Width" placeholder="Width" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Depth" placeholder="Depth" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HighBased" placeholder="High Based" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="WidthWithBase" placeholder="Width With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="DepthWithBase" placeholder="Depth With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="VESAmeasure" placeholder="VESA Measure" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Weight" placeholder="Weight" />
+          <h1 className="text-lg font-semibold mb-2">Model</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Model" placeholder="Model" />
+          <h1 className="text-lg font-semibold mb-2">Origin</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Origin" placeholder="High" />
+        </div>
+      );
+    } else if (type === '3') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2>Technical characteristics</h2>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="brand" placeholder="Brand" />
+        </div>
+      );
+    } else if (type === '4') {
+    setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2>Technical characteristics</h2>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="brand" placeholder="Brand" />
+        </div>
+    );
+    } else {
+      setAdditionalFieldsType(null);
+    }
+  };
+
+  const handleTypeElectro = (event) => {
+    const type = event.target.value;
+    setSelectedType(type);
+
+    if (type === '1') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2 className="text-xl font-semibold mb-2">Technical characteristics</h2>
+          <h1 className="text-lg font-semibold mb-2">Screen</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Inches" placeholder="Inches" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Resolution" placeholder="Resolution" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="ScreenFormat" placeholder="Screen Format" />
+          <h1 className="text-lg font-semibold mb-2">General Features</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="SmartTV" placeholder="SmartTV" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Processor" placeholder="Processor" />
+          <h1 className="text-lg font-semibold mb-2">Connectivity</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsHDMI" placeholder="Inputs HDMI" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsUSB" placeholder="Inputs USB" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InternetConnection" placeholder="Internet Connection" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NFC" placeholder="NFC" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HeadphoneJack" placeholder="Headphone Jack" />
+          <h1 className="text-lg font-semibold mb-2">Sound</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="AudioFormats" placeholder="Audio Formats" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NumberOfSpeakers" placeholder="Number Of Speakers" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Power" placeholder="Power" />
+          <h1 className="text-lg font-semibold mb-2">Dimensions</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="High" placeholder="High" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Width" placeholder="Width" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Depth" placeholder="Depth" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HighBased" placeholder="High Based" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="WidthWithBase" placeholder="Width With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="DepthWithBase" placeholder="Depth With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="VESAmeasure" placeholder="VESA Measure" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Weight" placeholder="Weight" />
+          <h1 className="text-lg font-semibold mb-2">Model</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Model" placeholder="Model" />
+          <h1 className="text-lg font-semibold mb-2">Origin</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Origin" placeholder="High" />
+        </div>
+      );
+    } else if (type === '2') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2 className="text-xl font-semibold mb-2">Technical characteristics</h2>
+          <h1 className="text-lg font-semibold mb-2">Screen</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Inches" placeholder="Inches" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Resolution" placeholder="Resolution" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="ScreenFormat" placeholder="Screen Format" />
+          <h1 className="text-lg font-semibold mb-2">General Features</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="SmartTV" placeholder="SmartTV" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Processor" placeholder="Processor" />
+          <h1 className="text-lg font-semibold mb-2">Connectivity</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsHDMI" placeholder="Inputs HDMI" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InputsUSB" placeholder="Inputs USB" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="InternetConnection" placeholder="Internet Connection" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NFC" placeholder="NFC" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HeadphoneJack" placeholder="Headphone Jack" />
+          <h1 className="text-lg font-semibold mb-2">Sound</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="AudioFormats" placeholder="Audio Formats" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="NumberOfSpeakers" placeholder="Number Of Speakers" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Power" placeholder="Power" />
+          <h1 className="text-lg font-semibold mb-2">Dimensions</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="High" placeholder="High" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Width" placeholder="Width" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Depth" placeholder="Depth" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="HighBased" placeholder="High Based" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="WidthWithBase" placeholder="Width With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="DepthWithBase" placeholder="Depth With Base" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="VESAmeasure" placeholder="VESA Measure" />
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Weight" placeholder="Weight" />
+          <h1 className="text-lg font-semibold mb-2">Model</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Model" placeholder="Model" />
+          <h1 className="text-lg font-semibold mb-2">Origin</h1>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="Origin" placeholder="High" />
+        </div>
+      );
+    } else if (type === '3') {
+      setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2>Technical characteristics</h2>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="brand" placeholder="Brand" />
+        </div>
+      );
+    } else if (type === '4') {
+    setAdditionalFieldsType(
+        <div>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="description" placeholder="Short description" />
+          <h2>Technical characteristics</h2>
+          <input className="w-full p-2 border rounded mb-2" type="text" name="brand" placeholder="Brand" />
+        </div>
+    );
+    } else {
+      setAdditionalFieldsType(null);
+    }
+  };
+
 
   return (
     <div className='flex p-6'>
