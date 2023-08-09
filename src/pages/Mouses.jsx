@@ -5,6 +5,11 @@ export default function Mouses() {
   const prop = "Mouse";
 
   return (
-    <Product property={prop} />
+    <div>
+<div className='w-full h-[30vh]'>
+  <img className='h-[60vh] w-full' src="https://xtech-frontend.s3.amazonaws.com/media/img/Banners-Sub-categoria-Gaming-Mice-DK.jpg" alt="" />
+</div>
+      <Product property={prop} />
+    </div>
   );
 }
