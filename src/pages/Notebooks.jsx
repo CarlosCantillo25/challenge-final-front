@@ -5,6 +5,11 @@ export default function Notebooks() {
   const prop = "NOTEBOOK";
 
   return (
-    <Product property={prop} />
+    <div>
+<div className='w-full h-[30vh]'>
+  <img className='h-[60vh] w-full' src="https://www.universityofgalway.ie/media/informationsolutionsservices/images/servicesforstudents/AdobeStock_220815091.jpeg" alt="" />
+</div>
+      <Product property={prop} />
+    </div>
   );
 }

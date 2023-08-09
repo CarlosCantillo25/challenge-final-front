@@ -25,7 +25,7 @@ import Kitchens from "../src/pages/Kitchens.jsx"
 import Blenders from "../src/pages/Blenders.jsx"
 import Laundrys from "../src/pages/Laundrys.jsx"
 import VerifyAccount from "../src/pages/VerifyAccount";
-
+import ResultProducts from "../src/pages/ResultProducts";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -102,6 +102,10 @@ const router = createBrowserRouter([
             {
                 path: '/Blenders',
                 element: <Blenders/>
+            },
+            {
+                path: '/ResultProducts',
+                element:  <ResultProducts/>
             },
             {
                 path: '/products/:id',

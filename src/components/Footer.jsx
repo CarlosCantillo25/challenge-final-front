@@ -6,8 +6,8 @@ return (
           <div className="flex md:flex-col flex-row">
             <Anchor to={'/'}><img src="/logo2.png" className="h-[200px] object-cover" /></Anchor>
             <div className="flex flex-col md:flex-row md:mt-[-30px] justify-around">
-              <img src="/facebook.png" className="h-[35px]" />
-              <img src="/instagram.png" className="h-[35px]" />
+              <img src="/face.png" className="h-[35px]" />
+              <img src="/insta.png" className="h-[35px]" />
               <img src="/youtube.png" className="h-[35px]" />
               <img src="/linkedin.png" className="h-[35px]" />
             </div>
