@@ -4,5 +4,7 @@ export const api = axios.create({baseURL: apiUrl})
 export const endpoints = {
     products: "products/",
     product: "products/",
-    Login: "user/signin",
+    login: "user/signin",
+    register: "user/register",
+    google: "user/google",
 }

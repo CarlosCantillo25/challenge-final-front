@@ -10,7 +10,7 @@ export default function Index() {
   }, [dispatch]);
 
   const read_products = useSelector((store) => store.products.products);
-  const moreViews = read_products.filter((elemento) => elemento.Moreview === true);
+  const moreViews = read_products?.filter((elemento) => elemento.Moreview === true);
   const [currentSlideCarousel1, setCurrentSlideCarousel1] = useState(0);
   const [currentSlideCarousel2, setCurrentSlideCarousel2] = useState(0);
   const [currentSlideCarousel3, setCurrentSlideCarousel3] = useState(0);
@@ -90,16 +90,16 @@ export default function Index() {
     // Agrega aquí tus imágenes con sus nombres de archivos
  ];
  
-  const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
-  const currentPhones = imagesPhones.slice(currentSlideCarousel2, currentSlideCarousel2 + imagesPorSlide);
-  const imagesDesktop = moreViews.filter(item => item.type === "NOTEBOOK" || item.type === "DESKTOP");
-  const currentDesktop = imagesDesktop.slice(currentSlideCarousel3, currentSlideCarousel3 + imagesPorSlide);
-  const imagesGamers = moreViews.filter(item => item.type === "pc" || item.type === "Chair" || item.type === "Mouse");
-  const currentGamers = imagesGamers.slice(currentSlideCarousel4, currentSlideCarousel4 + imagesPorSlide);
-  const imagesAudio = moreViews.filter(item => item.type === "TV" || item.type === "SPEAKERS" || item.type === "HEADPHONES" || item.type === "MICROPHONE" || item.type === "CAMERAS");
-  const currentAudio = imagesAudio.slice(currentSlideCarousel5, currentSlideCarousel5 + imagesPorSlide);
-  const imagesElectro = moreViews.filter(item => item.type === "Fridge" || item.type === "Air" || item.type === "Kitchen" || item.type === "Blender" || item.type === "Laundry");
-  const currentElectro= imagesElectro.slice(currentSlideCarousel6, currentSlideCarousel6 + imagesPorSlide);
+  const imagesPhones = moreViews?.filter(item => item.type === "Phones" || item.type === "Tabs");
+  const currentPhones = imagesPhones?.slice(currentSlideCarousel2, currentSlideCarousel2 + imagesPorSlide);
+  const imagesDesktop = moreViews?.filter(item => item.type === "NOTEBOOK" || item.type === "DESKTOP");
+  const currentDesktop = imagesDesktop?.slice(currentSlideCarousel3, currentSlideCarousel3 + imagesPorSlide);
+  const imagesGamers = moreViews?.filter(item => item.type === "pc" || item.type === "Chair" || item.type === "Mouse");
+  const currentGamers = imagesGamers?.slice(currentSlideCarousel4, currentSlideCarousel4 + imagesPorSlide);
+  const imagesAudio = moreViews?.filter(item => item.type === "TV" || item.type === "SPEAKERS" || item.type === "HEADPHONES" || item.type === "MICROPHONE" || item.type === "CAMERAS");
+  const currentAudio = imagesAudio?.slice(currentSlideCarousel5, currentSlideCarousel5 + imagesPorSlide);
+  const imagesElectro = moreViews?.filter(item => item.type === "Fridge" || item.type === "Air" || item.type === "Kitchen" || item.type === "Blender" || item.type === "Laundry");
+  const currentElectro= imagesElectro?.slice(currentSlideCarousel6, currentSlideCarousel6 + imagesPorSlide);
   
   return (
     <main className='bg-[white] w-full h-auto'>
@@ -138,7 +138,7 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
-  {currentPhones.map((item, index) => (
+  {currentPhones?.map((item, index) => (
   <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
     <Anchor to={`/products/${item._id}`}>
       <img
@@ -180,7 +180,7 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
-  {currentDesktop.map((item, index) => (
+  {currentDesktop?.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] h-[20rem] w-[17rem] rounded-[10px] p-[1rem]">
       <Anchor to={`/products/${item._id}`}>
       <img
@@ -221,7 +221,7 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
-  {currentGamers.map((item, index) => (
+  {currentGamers?.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
       <Anchor to={`/products/${item._id}`} >
       <img
@@ -262,7 +262,7 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
-  {currentAudio.map((item, index) => (
+  {currentAudio?.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
       <Anchor to={`/products/${item._id}`}>
       <img
@@ -303,7 +303,7 @@ export default function Index() {
   >
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
   </svg>
-  {currentElectro.map((item, index) => (
+  {currentElectro?.map((item, index) => (
     <div key={item._id} className="carousel-item bg-[white] w-[17rem] h-[20rem] rounded-[10px] p-[1rem]">
       <Anchor to={`/products/${item._id}`}>
       <img

@@ -1,15 +1,19 @@
 import React from 'react'
+import GoogleLogin from 'react-google-login';
 import { Link, useNavigate } from "react-router-dom";
-// import { api, apiUrl, endpoints } from '../utils/api.js';
+import { api, apiUrl, endpoints } from '../utils/api.js';
 import { useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
+import { useDispatch } from 'react-redux';
+import { setToken, setUser, setPhoto } from '../redux/actions/user.js';
+import { LS } from '../utils/localStorageUtils.js';
 
 export default function Register() {
     let inputEmail = useRef("");
     let inputPassword = useRef("");
     let navigate = useNavigate();
+    const dispatch = useDispatch();
 
     async function handleFormSubmit(e) {
         e.preventDefault();
@@ -21,7 +25,6 @@ export default function Register() {
 
         try {
             let { data } = await axios.post("http://localhost:8082/api/user/signin", dato);
-            console.log(data);
             const token = data.response?.token;
             localStorage.setItem("token", data.response?.token);
             localStorage.setItem("user", JSON.stringify(data.response?.user));
@@ -31,7 +34,6 @@ export default function Register() {
                 title: "Logged In!",
             });
             navigate("/");
-            console.log(data);
             console.log(token);
         } catch (error) {
             console.log(error);
@@ -41,6 +43,70 @@ export default function Register() {
             });
         }
     }
+
+    const responseSuccess = (res) => {
+        let data = {
+          email: res.profileObj.email,
+          password: res.profileObj.googleId
+        }
+    
+        const signInWithGoogle = async () => {
+          try {
+            const response = await api.post(apiUrl + endpoints.login, data);
+            console.log(response);
+            if (response.data.success) {
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'User signed in!',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+      
+              const { user, token } = response.data.response;
+
+              LS.add('token', token)
+              LS.add('user', user)
+              dispatch(setUser(user));
+              dispatch(setPhoto(user.photo));
+      
+              navigate('/');
+            } else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Authentication failed!',
+              });
+            }
+          } catch (error) {
+            console.log(error)
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Authentication failed!',
+            });
+          }
+        };
+      
+        signInWithGoogle();
+      }
+
+      const responseGoogle = (res) => {
+        if(res?.tokenId){
+          responseSuccess(res)
+        }
+        if (res.error === "popup_closed_by_user") {
+          // Mostrar una notificación o mensaje al usuario informando que el inicio de sesión fue cancelado.
+          Swal.fire({
+            icon: "info",
+            title: "Login canceled",
+            text: "The login process with Google was canceled by the user.",
+          });
+        } else {
+          console.log("Failed to sign in with Google:", res.error);
+        }
+      }
+
     return (
         <div className= /*bg-[#333] */"flex flex-col justify-between min-h-screen ">
             <div className= /*bg-[aqua]*/'p-[1rem] flex justify-center items-center min-h-[10vh] w-fullmax-sx:flex'>
@@ -86,7 +152,14 @@ export default function Register() {
                         </div>
 
                     </form>
-
+                    <GoogleLogin
+                    className='w-[70%] md:w-[60%] flex justify-center'
+                    clientId="393235807340-092f45s1qiasssao75ceoq4br58rgkpr.apps.googleusercontent.com"
+                    buttonText="Sign in with Google"
+                    onSuccess={responseSuccess}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                    />
                     <div className='max-sx:flex max-sx:flex-col flex flex-col justify-center items-center'>
                         <Link to="/Register" className="">
                             Already have an account? <span className="text-blue-500">Sign up</span>
