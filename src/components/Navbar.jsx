@@ -18,41 +18,51 @@ const [isVerified, setIsVerified] = useState(false);
 const [searchTerm, setSearchTerm] = useState("");
 const [searchResults, setSearchResults] = useState([]);
 const [isModalOpen, setIsModalOpen] = useState(false);
-
+const [filteredProducts, setFilteredProducts] = useState([]);
+  const searchQuery = localStorage.getItem('searchTerm');
 
   
-const performSearch = () => {
-  if (searchTerm === "") {
-    setSearchResults([]);
-  } else {
-    const filtered = read_products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())||
-      product.brand.toLowerCase().includes(searchTerm.toLowerCase())||
-      product.type.toLowerCase().includes(searchTerm.toLowerCase())||
-      product.category.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(filtered);
-  }
-};
+  const performSearch = () => {
+    if (searchTerm === '') {
+      setSearchResults([]);
+    } else {
+      const filtered = read_products.filter(
+        (product) =>
+          product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(filtered);
+    }
+  };
+
 const closeModal = () => {
   setIsModalOpen(false);
 };
-
 const handleSearchClick = () => {
   if (searchTerm) {
-    
-    closeModal()
-    navigate(`/ResultProducts?search=${encodeURIComponent(searchTerm)}`);
+    closeModal();
+    performSearch();
+    saveSearchResultsToLocalStorage();
+    navigate('/ResultProducts');
   }
 };
 
 const handleEnterKey = (event) => {
-  if (event.key === "Enter" && searchTerm) {
-    closeModal()
-    navigate(`/ResultProducts?search=${encodeURIComponent(searchTerm)}`);
+  if (event.key === 'Enter' && searchTerm) {
+    closeModal();
+    performSearch();
+    saveSearchResultsToLocalStorage();
+    navigate('/ResultProducts');
   }
 };
 
+const saveSearchResultsToLocalStorage = () => {
+  const matchingProductIds = searchResults.map((product) => product._id);
+  localStorage.setItem('search', JSON.stringify(matchingProductIds));
+  localStorage.setItem('searchTerm', JSON.stringify(searchTerm)); // Guardar el término de búsqueda
+};
 
 useEffect(() => {
     dispatch(productsActions.read_products());
@@ -200,7 +210,7 @@ useEffect(() => {
     ))}
     {searchResults.length > 5 && (
       <div className="text-center mt-3">
-        <Anchor to="/ResultProducts" className="text-blue-500 hover:underline" onClick={closeModal}>
+        <Anchor to="/ResultProducts" className="text-blue-500 hover:underline" onClick={saveSearchResultsToLocalStorage}>
           More Views
         </Anchor>
       </div>
