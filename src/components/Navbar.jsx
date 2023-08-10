@@ -87,24 +87,16 @@ useEffect(() => {
   };
 
 
-  function navigateToTVPage() {
-    navigate("/TV");
+ function navigateHomeAppliancePage() {
+    navigate("/homeAppliances");
   }
-  function navigateToPhonesPage() {
-    navigate("/Phones");
+  function navigateGamersPage() {
+    navigate("/gamersPage");
   }
-  function navigateToFrezeerPage() {
-    navigate("/Fridge");
+  function navigateTechPage() {
+    navigate("/techsPage");
   }
-  function navigateToAudioPage() {
-    navigate("/SPEAKERS");
-  }
-
-  function navigateToAirPage() {
-    navigate("/Air");
-  }
-
-  function navigateToLoginPage() {
+ function navigateToLoginPage() {
     navigate("/Login");
   }
 
@@ -260,10 +252,12 @@ useEffect(() => {
           </div>
         )}
         <div className='flex flex-col items-center'>
+          <Anchor to={'/carritoPage'}>
           <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
           </svg>
           <p className='hidden md:block text-[white] text-center'>My shopping cart</p>
+          </Anchor>
         </div>
       </div>
       {isLoggedIn() && user && user.verified === false ? (
@@ -291,28 +285,20 @@ useEffect(() => {
       <div id='segunda seccion' className="bg-[#FFFBEB] h-[10vh] w-full flex items-center p-10">
 
        <DesplegableCat/>
-      <div className='hidden lg:flex justify-between w-full bg-[#FFFBEB]'>
-        <button onClick={navigateToTVPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/TV.png" alt="" />
-          <p>TV</p>
+      <div className='hidden lg:flex justify-around w-full bg-[#FFFBEB]'>
+        <button onClick={navigateHomeAppliancePage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/iconAppliances.png" alt="" />
+          <p>Home & Appliances</p>
         </button>
-        <button onClick={navigateToPhonesPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/cell.png" alt="" />
-          <p>Phones</p>
+        <button onClick={navigateGamersPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/iconGamer.png" alt="" />
+          <p>Gamers</p>
         </button>
-        <button onClick={navigateToFrezeerPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/freezer.png" alt="" />
-          <p>Fridges</p>
+        <button onClick={navigateTechPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/techs.png" alt="" />
+          <p>Techs</p>
         </button>
-        <button onClick={navigateToAudioPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/audio.png" alt="" />
-          <p>Audio</p>
-        </button>
-        <button onClick={navigateToAirPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/air.png" alt="" />
-          <p>Air conditionet</p>
-        </button>
-      </div>
+        </div>
 </div>
 </nav>
   );

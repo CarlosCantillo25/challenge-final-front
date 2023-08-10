@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setProduct } from '../redux/actions/product.js';
 import { api, apiUrl, endpoints } from '../utils/api.js';
 import { Link as Anchor, useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2'; // Asegúrate de importar SweetAlert
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -19,9 +20,29 @@ const ProductDetail = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [isTechnicalModalOpen, setIsTechnicalModalOpen] = useState(true);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
+  const inputProduct = useRef()
+  const captureId=inputProduct.current?.value
   const product = useSelector((state) => state.product.product);
 
-  function navigateToHomePage() {
+  function clickAddToCart() {
+    if (captureId && product) {
+      const currentCart = JSON.parse(localStorage.getItem('product cart')) || [];
+  
+      currentCart.push(captureId);
+      localStorage.setItem('product cart', JSON.stringify(currentCart));
+  
+      // Mostrar la alerta de éxito
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your product was added to the cart',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }
+ 
+function navigateToHomePage() {
     navigate("/");
   }
 
@@ -746,8 +767,8 @@ const ProductDetail = () => {
                             <p className='text-sm text-sky-700 mb-2'>See branches</p>
                         </div>
                         <div className='flex flex-row justify-center items-center mt-4'>
-                          <button className='border p-2 bg-[#007BFF] rounded-md w-[250px]'>
-                            <p className='text-xl font-bold text-white'>BUY</p>
+                          <button ref={inputProduct} onClick={clickAddToCart}  value={id} className='border p-2 bg-[#007BFF] rounded-md w-[250px]'>
+                            <p className='text-xl font-bold text-white'>Add to cart</p>
                           </button>
                         </div>
                     </div>
