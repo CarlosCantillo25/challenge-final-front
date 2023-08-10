@@ -10,7 +10,7 @@ import Index from "../src/pages/Index.jsx";
 import Kitchens from "../src/pages/Kitchens.jsx"
 import Blenders from "../src/pages/Blenders.jsx"
 import Laundrys from "../src/pages/Laundrys.jsx"
-
+import HomeAppliances from "../src/pages/HomeAppliances";
 import ControlPanel from "../src/pages/ControlPanel.jsx";
 import AddProduct from "../src/pages/AddProduct.jsx"
 import ModifyProduct from "../src/pages/ModifyProduct.jsx"
@@ -22,9 +22,10 @@ import RemovePermissions from "../src/pages/RemovePermissions.jsx"
 import GoodReviews from "../src/pages/GoodReviews.jsx"
 import BadReviews from "../src/pages/BadReviews.jsx"
 import AllReviews from "../src/pages/AllReviews.jsx"
-
+import GamersPage from "../src/pages/gamersPage";
 import ResultProducts from "../src/pages/ResultProducts";
-
+import TechsPage from "../src/pages/techsPage";
+import CarritoPage from "../src/pages/carritoPage";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -107,9 +108,26 @@ const router = createBrowserRouter([
                 element:  <ResultProducts/>
             },
             {
+                path: '/homeAppliances',
+                element:  <HomeAppliances/>
+            },
+            {
+                path: '/gamersPage',
+                element:  <GamersPage/>
+            },
+            {
+                path: '/techsPage',
+                element:  <TechsPage/>
+            },
+            {
+                path: '/carritoPage',
+                element:  <CarritoPage/>
+            },
+            {
                 path: '/products/:id',
                 element: <ProductDetail />
             },
+            
             {
                 path: '/Register',
                 element: (
