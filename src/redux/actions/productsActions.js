@@ -26,6 +26,19 @@ const update_product = createAsyncThunk(
     }
   );
 
+  const delete_product = createAsyncThunk(
+    'delete',
+    async (productId) => {
+      try {
+        const response = await axios.delete(`http://localhost:8082/api/products/${productId}`);
+        return response.data;
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+    }
+);
 
-const productsActions = { read_products, update_product }
+
+const productsActions = { read_products, update_product, delete_product }
 export default productsActions

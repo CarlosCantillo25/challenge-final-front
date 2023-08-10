@@ -96,6 +96,14 @@ function ModifyProduct() {
       setRandomProducts(randomSubset);
     }, []);
 
+    const formatCurrency = (amount) => {
+      if (typeof amount === 'number') {
+        return `USD $${amount.toFixed(0)}`;
+      } else {
+        return '';
+      }
+    };
+
     return (
       <div className='flex flex-col mt-10 items-center mb-10' >
         <div className="w-[40%] flex flex-col justify-center" >
@@ -162,7 +170,9 @@ function ModifyProduct() {
                 <div key={product._id} className="flex flex-col items-center justify-center mb-6 mx-2 bg-white w-[300px] h-[300px] lg:h-[450px] rounded-2xl shadow-xl hover:border-4">
                   <img src={product.cover_photo[0]} alt={product.title} className='mb-4 h-[100px] lg:h-[250px]'/>
                   <p className='text-[18px] mb-2 text-center w-[80%]'>{product.title}</p>
-                  <button className='text-blue-500 font-semibold' onClick={() => setSelectedProduct(product)}>Edit</button>
+                  <p className='text-[18px] mb-2 text-center w-[80%] font-semibold'>{product.brand}</p>
+                  <p className=' font-semibold md:text-[22px] mb-2'>{formatCurrency(product.price)}</p>
+                  <button className='text-blue-500 font-semibold text-xl' onClick={() => setSelectedProduct(product)}>EDIT</button>
                 </div>
               ))}
             </div>
