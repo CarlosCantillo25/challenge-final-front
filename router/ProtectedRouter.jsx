@@ -3,7 +3,7 @@ import { Navigate} from "react-router-dom";
 
 const ProtectedRouter = ({ children }) => {
     let user = localStorage.getItem("token");
-    if (user) return <Navigate to={"/"} />;
+    if (!user) return <Navigate to={"/"} />;
     return children;  
 };
 
