@@ -9,4 +9,7 @@ export const endpoints = {
     google: "user/google",
     verify: "user/verify/",
     createdProduct: "products/created",
+    admin: "user/createAdmin",
+    adminUp: "user/updateAdmin/",
+    delete: "user/"
 }

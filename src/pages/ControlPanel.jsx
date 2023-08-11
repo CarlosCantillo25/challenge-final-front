@@ -78,7 +78,7 @@ const ControlPanel = () => {
       <div className="bg-white p-4 rounded shadow-md m-4 min-w-[350px] text-center">
         <h2 className="text-[#0062ff] text-xl font-semibold mb-2">DELETE ADMINISTRATOR</h2>
         <div className='flex flex-col items-start ms-4 text-[#587f69] font-semibold'>
-            <button onClick={navigateToRemove}>- Delete administrator user</button>
+            <button onClick={navigateToRemove}>- Delete users</button>
             <button onClick={navigateToRemovePermissions}>- Remove permissions</button>
         </div>
       </div>
