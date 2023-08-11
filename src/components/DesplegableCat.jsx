@@ -4,9 +4,11 @@ import { Link as Anchor } from 'react-router-dom';
 export default function DesplegableCat() {
   const [openSearch, setOpenSearch] = useState(false);
   const [openCategories, setOpenCategories] = useState({});
+ 
 
   const openDropdown = () => {
     setOpenSearch(true);
+
   };
 
   const closeDropdown = () => {
@@ -22,19 +24,19 @@ export default function DesplegableCat() {
 
   return (
     <div
-      className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[30rem]"
+      className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[20rem]"
       onMouseEnter={openDropdown}
       onMouseLeave={closeDropdown}
     >
-      <span className="text-[gray] cursor-pointer font-semibold lg:text-2xl text-xl ms-[-40px] md:ms-0">
-        CATEGORIES
-      </span>
+      <p className="text-[gray] cursor-pointer font-semibold lg:text-2xl text-xl ms-[-40px] md:ms-0 flex items-center justify-around">
+        More   <svg className={`w-[1rem] mt-[0.4rem] ${openSearch ? 'transform rotate-180' : ''}`} class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
+  </svg>
+      </p>
       {openSearch && (
-        <div className="absolute mt-[1.4rem] w-[20rem] bg-white shadow-md z-10">
-          <p className="block px-4 py-2 text-[#1b1f24] text-center text-[1.2rem]">
-            Search products for categories
-          </p>
+        <div className="absolute mt-[1.4rem] w-[23rem] bg-white shadow-md z-10">
           <div onMouseEnter={() => toggleCategories('Mobile & Tabs')} onMouseLeave={() => toggleCategories('Mobile & Tabs')}>
+            <p className='ml-[1.2rem] text-[1.2rem] text-[gray]'>Search for specific products by category</p>
             <p className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
               Techs
             </p>
@@ -59,19 +61,16 @@ export default function DesplegableCat() {
           </div>
           <div onMouseEnter={() => toggleCategories('Category2')} onMouseLeave={() => toggleCategories('Category2')}>
             <p className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
-              TV & AUDIO
+              Audio & Video
             </p>
             {openCategories['Category2'] && (
-              <div className="absolute top-0 left-full mt-0 bg-white shadow-md z-10 w-[15rem] h-[30vh]">
-                <p className='text-center text-[1.3rem] py-[1rem]'>TV & AUDIO</p>
-                <Anchor to={'/TV'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
-                  TV
-                </Anchor>
+              <div className="absolute top-0 left-full mt-0 bg-white shadow-md z-10 w-[15rem] h-[25vh]">
+                <p className='text-center text-[1.3rem] py-[1rem]'>Audio & video</p>
                 <Anchor to={'/Headphones'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
                   Headphones
                 </Anchor>
-                <Anchor to={'/Microphones'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
-                  Microphones
+                <Anchor to={'/SPEAKERS'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
+                  Speakers
                 </Anchor>
                 <Anchor to={'/Cameras'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
                   Cameras
@@ -87,7 +86,7 @@ export default function DesplegableCat() {
             </p>
             {openCategories['Category3'] && (
               <div className="absolute top-0 left-full mt-0 bg-white  shadow-md z-10 w-[15rem] h-[30vh]">
-                <p className='text-center text-[1.3rem] py-[1rem]'>Gamer components</p>
+                <p className='text-center text-[1.3rem] py-[1rem]'>Gamers</p>
                 <Anchor to={'/Chairs'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
                   Gamer's chairs
                 </Anchor>
@@ -97,6 +96,9 @@ export default function DesplegableCat() {
                 <Anchor to={'/Pc'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
                   PC's Gamer
                 </Anchor>
+                <Anchor to={'/Microphones'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
+                  Microphones
+                </Anchor>
                 </div>
             )}
           </div>
@@ -105,8 +107,11 @@ export default function DesplegableCat() {
             Home & appliances
             </p>
             {openCategories['Category4'] && (
-              <div className="absolute top-0 left-full mt-0 bg-white border shadow-md z-10 w-[15rem] h-[35vh]">
+              <div className="absolute top-0 left-full mt-0 bg-white border shadow-md z-10 w-[15rem] h-[40vh]">
                 <p className='text-center text-[1.3rem] py-[1rem]'>Home & appliances</p>
+                <Anchor to={'/TV'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
+                  TV
+                </Anchor>
                 <Anchor to={'/Fridge'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
                   Fridges
                 </Anchor>
@@ -114,7 +119,7 @@ export default function DesplegableCat() {
                   Kitchens
                 </Anchor>
                 <Anchor to={'/Air'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
-                  Air conditionets
+                  Air conditioners
                 </Anchor>
                 <Anchor to={'/Laundrys'} className="block px-4 py-2 text-[#007BFF] hover:text-[gray] text-[1rem] cursor-pointer">
                   Laundrys

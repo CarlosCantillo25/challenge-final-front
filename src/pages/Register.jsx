@@ -60,7 +60,9 @@ export default function Register() {
         };
 
         axios
+
             .post(apiUrl + endpoints.google , data)
+
             .then((res) => {
                 Swal.fire({
                     position: 'center',
