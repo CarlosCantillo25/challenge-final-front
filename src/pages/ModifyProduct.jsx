@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 function ModifyProduct() {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const { update_product } = productsActions
   const read_products = useSelector((store) => store.products.products);
@@ -30,15 +32,6 @@ function ModifyProduct() {
       setShowSearchResults(true);
     }
   };
-
-    const handleSearchClick = () => {
-      if (searchTerm) {
-        closeModal();
-        performSearch();
-        saveSearchResultsToLocalStorage();
-        navigate('/ResultProducts');
-      }
-    };
     
     const handleEnterKey = (event) => {
       if (event.key === 'Enter' && searchTerm) {
@@ -68,7 +61,7 @@ function ModifyProduct() {
           icon: "success",
           title: "Update Succesfull!",
         });
-
+        navigate('/ControlPanel')
         performSearch()
       } catch (error) {
         console.log(error);
@@ -80,11 +73,6 @@ function ModifyProduct() {
     };
 
     useEffect(() => {
-        dispatch(productsActions.read_products());
-    }, [dispatch]);
-
-
-    useEffect(() => {
       performSearch();
     }, [searchTerm]);
 
@@ -94,7 +82,7 @@ function ModifyProduct() {
         .sort(() => Math.random() - 0.5)
         .slice(0, 20); 
       setRandomProducts(randomSubset);
-    }, []);
+    }, [dispatch]);
 
     const formatCurrency = (amount) => {
       if (typeof amount === 'number') {

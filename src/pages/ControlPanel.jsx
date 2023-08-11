@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ControlPanel = () => {
     const navigate = useNavigate()
@@ -43,6 +44,10 @@ const ControlPanel = () => {
     function navigateToAllReviews() {
         navigate("/AllReviews")
     }
+
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, []);
 
   return (
     <div className="p-10 flex flex-wrap justify-around">

@@ -139,16 +139,10 @@ export default function Register() {
                             ref={inputPassword}
                         />
 
-                        <label className='text-center p-[.5rem] '>
-                            <input type="checkbox" id="miCheckbox" /> Send notification to my email
-                        </label>
-
                         <div className='flex justify-center'>
-                            <input
-                                type="submit"
-                                value="Log in"
-                                className="mt-2 w-[15rem] max-sx:w-[11rem] h-[3.5rem] rounded-lg bg-gradient-to-r from-[#448cdf] to-[#1970d4] text-white font-bold text-lg "
-                            />
+                          <button className="mt-2 w-[15rem] max-sx:w-[11rem] h-[3.5rem] rounded-lg bg-gradient-to-r from-[#448cdf] to-[#1970d4] text-white font-bold text-lg">
+                            <p>Log in</p>
+                          </button>
                         </div>
 
                     </form>

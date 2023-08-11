@@ -7,6 +7,7 @@ export default function Index() {
 
   useEffect(() => {
     dispatch(productsActions.read_products());
+    window.scrollTo(0, 0)
   }, [dispatch]);
 
   const read_products = useSelector((store) => store.products.products);

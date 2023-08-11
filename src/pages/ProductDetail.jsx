@@ -289,7 +289,6 @@ const ProductDetail = () => {
                             <p className='mb-2'>You are in </p>
                         </div>
                         <div className='mt-2 border-b-2'>
-                            <p className='flex flex-row items-center text-lime-700'><img src="/entrega.png" className='w-[30px] me-4'/>Delivery $$$</p>
                             <p className='flex flex-row items-center mb-2'><img src="/tienda.png" className='w-[30px] me-4'/>Withdraw FREE at our branch. <span className='font-semibold text-lime-700 ms-2'>Withdraw it NOW!</span></p>
                             <p className='text-sm text-sky-700 mb-2'>See branches</p>
                         </div>

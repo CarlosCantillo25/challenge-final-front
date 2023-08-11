@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { apiUrl, endpoints } from '../utils/api.js';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 export default function AddProduct() {
+
+  const navigate = useNavigate()
 
   const [moreViewOption, setMoreViewOption] = useState('');
   const [productName, setProductName] = useState('');
@@ -169,17 +172,20 @@ export default function AddProduct() {
 
     try {
       const response = await fetch(apiUrl + endpoints.createdProduct, requestOptions);
-
-      Swal.fire({
-        icon: "success",
-        title: "Update Succesfull!",
-      });
-
       if (response.ok) {
-        console.log('Producto agregado exitosamente');
+        console.log('Product added successfully');
+        Swal.fire({
+          icon: "success",
+          title: "Product added successfully!",
+        });
+        navigate('/ControlPanel')
       } else {
         console.log(response)
-        console.log('Error al agregar el producto');
+        Swal.fire({
+          icon: "error",
+          title: "Error adding product",
+        });
+        console.log('Error adding product');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);

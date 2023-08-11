@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 function DeleteProduct() {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const { delete_product } = productsActions;
   const read_products = useSelector((store) => store.products.products);
@@ -59,6 +61,7 @@ function DeleteProduct() {
         icon: "success",
         title: "Product Deleted!",
       });
+      navigate('/ControlPanel')
     } catch (error) {
       console.log(error);
     }

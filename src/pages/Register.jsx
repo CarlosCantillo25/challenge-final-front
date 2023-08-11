@@ -167,9 +167,6 @@ export default function Register() {
                             name="location"
                             className="p-3 mb-1 border-2 border-[#448cdf] h-[2.4rem] rounded-lg"
                         />
-                        <label className="text-center p-[.5rem] ">
-                            <input type="checkbox" id="miCheckbox" /> Send notification to my email
-                        </label>
 
                         <div className="flex justify-center">
                             <input
