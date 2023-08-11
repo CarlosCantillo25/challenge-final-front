@@ -155,7 +155,19 @@ function ModifyProduct() {
             <div className='m-2 flex'>
             <label className='font-semibold text-lg w-[250px] flex justify-start items-center'>Available:</label>
             <input type="text" className='border-2 ms-2 p-2 rounded' value={selectedProduct.available} onChange={(e) => setSelectedProduct({ ...selectedProduct, available: e.target.value, }) } />
-            </div> 
+            </div>
+            <div className='m-2 flex'>
+              <label className='font-semibold text-lg w-[250px] flex justify-start items-center'>Photo 1:</label>
+              <input type="text" className='border-2 ms-2 p-2 rounded' value={selectedProduct.cover_photo[0]} onChange={(e) => { const updatedPhotos = [...selectedProduct.cover_photo]; updatedPhotos[0] = e.target.value; setSelectedProduct({ ...selectedProduct, cover_photo: updatedPhotos }); }} />
+            </div>
+            <div className='m-2 flex'>
+              <label className='font-semibold text-lg w-[250px] flex justify-start items-center'>Photo 2:</label>
+              <input type="text" className='border-2 ms-2 p-2 rounded' value={selectedProduct.cover_photo[1]} onChange={(e) => { const updatedPhotos = [...selectedProduct.cover_photo]; updatedPhotos[1] = e.target.value; setSelectedProduct({ ...selectedProduct, cover_photo: updatedPhotos }); }} />
+            </div>
+            <div className='m-2 flex'>
+              <label className='font-semibold text-lg w-[250px] flex justify-start items-center'>Photo 3:</label>
+              <input type="text" className='border-2 ms-2 p-2 rounded' value={selectedProduct.cover_photo[2]} onChange={(e) => { const updatedPhotos = [...selectedProduct.cover_photo]; updatedPhotos[2] = e.target.value; setSelectedProduct({ ...selectedProduct, cover_photo: updatedPhotos }); }} />
+            </div>
             <div className='flex justify-around mt-5'>
             <button onClick={handleSaveChanges} className='p-2 rounded bg-[#86d377bd]'>Save Changes</button>
             <button onClick={handleCancelEdit} className='p-2 rounded bg-[#ee3131b3]'>Cancel</button>

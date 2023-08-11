@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { apiUrl, endpoints } from '../utils/api.js';
+import Swal from 'sweetalert2';
 
 export default function AddProduct() {
 
@@ -168,6 +169,12 @@ export default function AddProduct() {
 
     try {
       const response = await fetch(apiUrl + endpoints.createdProduct, requestOptions);
+
+      Swal.fire({
+        icon: "success",
+        title: "Update Succesfull!",
+      });
+
       if (response.ok) {
         console.log('Producto agregado exitosamente');
       } else {
