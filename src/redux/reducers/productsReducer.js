@@ -59,7 +59,6 @@ const productsReducer = createReducer(initialState, (builder) => {
       })
     .addCase(delete_product.fulfilled, (state, action) => {
         state.products = state.products.filter((product) => product._id !== action.payload);
-        )
     })
 })
 export default productsReducer
