@@ -11,19 +11,19 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 function NavBar() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const read_products = useSelector((store) => store.products.products);
-  const [verificationCode, setVerificationCode] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isVerified, setIsVerified] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+const navigate = useNavigate();
+const dispatch = useDispatch();
+const read_products = useSelector((store) => store.products.products);
+const [verificationCode, setVerificationCode] = useState("");
+const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+const [isVerified, setIsVerified] = useState(false);
+const [searchTerm, setSearchTerm] = useState("");
+const [searchResults, setSearchResults] = useState([]);
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [filteredProducts, setFilteredProducts] = useState([]);
   const searchQuery = localStorage.getItem('searchTerm');
 
-
+  
   const performSearch = () => {
     if (searchTerm === '') {
       setSearchResults([]);
@@ -39,34 +39,34 @@ function NavBar() {
     }
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const handleSearchClick = () => {
-    if (searchTerm) {
-      closeModal();
-      performSearch();
-      saveSearchResultsToLocalStorage();
-      navigate('/ResultProducts');
-    }
-  };
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+const handleSearchClick = () => {
+  if (searchTerm) {
+    closeModal();
+    performSearch();
+    saveSearchResultsToLocalStorage();
+    navigate('/ResultProducts');
+  }
+};
 
-  const handleEnterKey = (event) => {
-    if (event.key === 'Enter' && searchTerm) {
-      closeModal();
-      performSearch();
-      saveSearchResultsToLocalStorage();
-      navigate('/ResultProducts');
-    }
-  };
+const handleEnterKey = (event) => {
+  if (event.key === 'Enter' && searchTerm) {
+    closeModal();
+    performSearch();
+    saveSearchResultsToLocalStorage();
+    navigate('/ResultProducts');
+  }
+};
 
-  const saveSearchResultsToLocalStorage = () => {
-    const matchingProductIds = searchResults.map((product) => product._id);
-    localStorage.setItem('search', JSON.stringify(matchingProductIds));
-    localStorage.setItem('searchTerm', JSON.stringify(searchTerm)); // Guardar el término de búsqueda
-  };
+const saveSearchResultsToLocalStorage = () => {
+  const matchingProductIds = searchResults.map((product) => product._id);
+  localStorage.setItem('search', JSON.stringify(matchingProductIds));
+  localStorage.setItem('searchTerm', JSON.stringify(searchTerm)); // Guardar el término de búsqueda
+};
 
-  useEffect(() => {
+useEffect(() => {
     dispatch(productsActions.read_products());
   }, [dispatch]);
 
@@ -86,8 +86,8 @@ function NavBar() {
   };
 
 
-  function navigateHomeAppliancePage() {
-    navigate("/homeAppliances");
+ function navigateHomeAppliancePage() {
+    navigate(`/homeAppliances`);
   }
   function navigateGamersPage() {
     navigate("/gamersPage");
@@ -95,7 +95,7 @@ function NavBar() {
   function navigateTechPage() {
     navigate("/techsPage");
   }
-  function navigateToLoginPage() {
+ function navigateToLoginPage() {
     navigate("/Login");
   }
 
@@ -110,7 +110,7 @@ function NavBar() {
   function navigateToControlPanel() {
     navigate("/ControlPanel");
   }
-
+ 
 
   let user = JSON.parse(localStorage.getItem("user"));
 
@@ -166,14 +166,14 @@ function NavBar() {
     performSearch();
   }, [searchTerm]);
 
-
+  
   return (
     <nav className="bg-[#007BFF] w-full min-h-[25vh]">
       <div className="h-[15vh] w-full bg-[#007BFF] flex justify-around items-center px-6">
         <Anchor to={'/'} ><img src="/logonav.png" alt="logo" className="hidden md:block w-[6.8rem] object-contain" /></Anchor>
         <div className="relative flex items-center">
-          <input type="text" placeholder="Find what you are looking for" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onBlur={handleInputBlur} onKeyDown={handleEnterKey} className="md:w-[20rem] lg:w-[30rem] h-[2.5rem] rounded-[5px] pl-[1rem] pr-[3rem] bg-white border-[#007BFF] focus:ring-[#007BFF] focus:shadow-[#007BFF] outline-none" />
-          <span className="absolute right-[1rem] md:right-[3rem] top-[50%] transform -translate-y-1/2 text-[#007BFF] cursor-pointer" onClick={() => { setIsModalOpen(true); handleSearchClick(); }} >
+          <input type="text" placeholder="Find what you are looking for" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onBlur={handleInputBlur} onKeyDown={handleEnterKey}  className="md:w-[20rem] lg:w-[30rem] h-[2.5rem] rounded-[5px] pl-[1rem] pr-[3rem] bg-white border-[#007BFF] focus:ring-[#007BFF] focus:shadow-[#007BFF] outline-none"/>
+          <span  className="absolute right-[1rem] md:right-[3rem] top-[50%] transform -translate-y-1/2 text-[#007BFF] cursor-pointer" onClick={() => { setIsModalOpen(true); handleSearchClick(); }} >
             <AiOutlineSearch size={24} />
           </span>
           {searchResults.length > 0 && (
@@ -201,7 +201,7 @@ function NavBar() {
         <div className='flex ml-[5rem] w-[20rem] justify-around'>
           {!isLoggedIn() ? (
             // Mostrar esto solo cuando el usuario no esté logueado
-            <div className='flex flex-col items-center '>
+            <div  className='flex flex-col items-center '>
               <svg className="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
               </svg>
@@ -230,26 +230,15 @@ function NavBar() {
               </div>
             </div>
           )}
-        </div>
-        {!isLoggedIn() ? (
-          <div className='flex flex-col items-center justify-center'>
-            <Anchor to={'/Login'} className='flex flex-col items-center'>
-              <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
-              </svg>
-              <p className='hidden md:block text-[white] text-center'>My shopping cart</p>
-            </Anchor>
           </div>
-        ):(
-          <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center'>
           <Anchor to={'/carritoPage'} className='flex flex-col items-center'>
-            <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
-            </svg>
-            <p className='hidden md:block text-[white] text-center'>My shopping cart</p>
+          <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
+          </svg>
+          <p className='hidden md:block text-[white] text-center'>My shopping cart</p>
           </Anchor>
-        </div>
-        )}
+          </div>
       </div>
       <div>
         {isLoggedIn() && user && user.verified === false ? (
@@ -259,40 +248,40 @@ function NavBar() {
         ) : ''}
       </div>
       {isVerified && (
-        <div className="flex flex-col w-full min-h-[25vh] items-center justify-around bg-[#FFFBEB]">
-          <button onClick={closeVerified}>
-            <img src="/close.png" className="h-7 ms-[20%] mt-[-4%] absolute" />
-          </button>
-          <form onSubmit={handleVerificationSubmit} className="flex mt-[-10%]">
-            <label className="text-[color:var(--secondary-gray,#9D9D9D)] text-base not-italic font-normal leading-[normal]">Enter Verification Code:</label>
-            <div className="ms-5 mt-[-20px]">
-              <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} required className="bg-[#FFFBEB] border-b-2 border-slate-400 p-2" />
-              <div className="mt-5 flex flex-col w-[200px] gap-2.5 p-2 rounded-[50000px] bg-[#007BFF]">
-                <button type="submit" className="text-white text-center text-lg not-italic font-bold leading-[normal]">Verify</button>
+                <div className="flex flex-col w-full min-h-[25vh] items-center justify-around bg-[#FFFBEB]">
+                  <button onClick={closeVerified}>
+                    <img src="/close.png" className="h-7 ms-[20%] mt-[-4%] absolute" />
+                  </button>
+                  <form onSubmit={handleVerificationSubmit} className="flex mt-[-10%]">
+                    <label className="text-[color:var(--secondary-gray,#9D9D9D)] text-base not-italic font-normal leading-[normal]">Enter Verification Code:</label>
+                    <div className="ms-5 mt-[-20px]">
+                        <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} required className="bg-[#FFFBEB] border-b-2 border-slate-400 p-2" />
+                        <div className="mt-5 flex flex-col w-[200px] gap-2.5 p-2 rounded-[50000px] bg-[#007BFF]">
+                            <button type="submit" className="text-white text-center text-lg not-italic font-bold leading-[normal]">Verify</button>
+                        </div>
+                    </div>
+                  </form>
               </div>
-            </div>
-          </form>
-        </div>
-      )}
+          )}
       <div id='segunda seccion' className="bg-[#FFFBEB] h-[10vh] w-full flex items-center p-10">
-        <DesplegableCat />
-        <div className='hidden lg:flex justify-around w-full bg-[#FFFBEB]'>
-          <button onClick={navigateHomeAppliancePage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/iconAppliances.png" alt="" />
-            <p>Home & Appliances</p>
-          </button>
-          <button onClick={navigateGamersPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/iconGamer.png" alt="" />
-            <p>Gamers</p>
-          </button>
-          <button onClick={navigateTechPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-            <img className='h-[2rem]' src="/techs.png" alt="" />
-            <p>Techs</p>
-          </button>
+       <DesplegableCat/>
+      <div className='hidden lg:flex justify-around w-full bg-[#FFFBEB]'>
+        <button onClick={navigateHomeAppliancePage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/iconAppliances.png" alt="" />
+          <p>Home & Appliances</p>
+        </button>
+        <button onClick={navigateGamersPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/iconGamer.png" alt="" />
+          <p>Gamers</p>
+        </button>
+        <button onClick={navigateTechPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+          <img className='h-[2rem]' src="/techs.png" alt="" />
+          <p>Techs</p>
+        </button>
 
         </div>
-      </div>
-    </nav>
+</div>
+</nav>
   );
 }
 
