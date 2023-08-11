@@ -10,5 +10,6 @@ export const endpoints = {
     verify: "user/verify/",
     createdProduct: "products/created",
     admin: "user/createAdmin",
-    adminUp: "user/updateAdmin"
+    adminUp: "user/updateAdmin/",
+    delete: "user/"
 }
