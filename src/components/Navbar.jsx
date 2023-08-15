@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { api, apiUrl, endpoints } from '../utils/api';
-import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import productsActions from '../redux/actions/productsActions.js';
 import { Link as Anchor } from "react-router-dom";
@@ -20,10 +19,7 @@ const [isVerified, setIsVerified] = useState(false);
 const [searchTerm, setSearchTerm] = useState("");
 const [searchResults, setSearchResults] = useState([]);
 const [isModalOpen, setIsModalOpen] = useState(false);
-const [filteredProducts, setFilteredProducts] = useState([]);
-const searchQuery = localStorage.getItem('searchTerm');
 
-  
   const performSearch = () => {
     if (searchTerm === '') {
       setSearchResults([]);
@@ -63,20 +59,13 @@ const handleEnterKey = (event) => {
 const saveSearchResultsToLocalStorage = () => {
   const matchingProductIds = searchResults.map((product) => product._id);
   localStorage.setItem('search', JSON.stringify(matchingProductIds));
-  localStorage.setItem('searchTerm', JSON.stringify(searchTerm)); // Guardar el término de búsqueda
+  localStorage.setItem('searchTerm', JSON.stringify(searchTerm)); 
 };
 
 useEffect(() => {
     dispatch(productsActions.read_products());
   }, [dispatch]);
 
-  const openDropdown = () => {
-    setIsDropdownOpen(true);
-  };
-
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-  };
   const openVerified = () => {
     setIsVerified(true);
   };
@@ -86,10 +75,6 @@ useEffect(() => {
   };
   function navigateHomeAppliancePage() {
     navigate(`/homeAppliances`);
-  }
-  function updateCurrentPage(newPage) {
-    setCurrentPage(newPage);
-    localStorage.setItem('currentPage', newPage);
   }
 
   function navigateGamersPage() {
@@ -143,9 +128,9 @@ useEffect(() => {
           showConfirmButton: false,
           timer: 3000,
         });
+        setIsVerified(true)
         closeVerified()
         navigate('/')
-
       } else {
         Swal.fire({
           icon: "error",
@@ -162,6 +147,7 @@ useEffect(() => {
       });
     }
   }
+
   const handleInputBlur = () => {
     setIsModalOpen(false);
   };
@@ -183,27 +169,28 @@ useEffect(() => {
             <div className="absolute top-full left-0 w-full bg-white shadow-md p-2 z-10 modal-content">
               {searchResults.slice(0, 5).map((product) => (
                 <Anchor key={product._id} to={`/products/${product._id}`} className="flex items-center gap-2 p-2" onClick={closeModal}>
-                  <img
-                    src={product.cover_photo[0]}
-                    alt={product.title}
-                    className="w-12 h-12 object-cover"
-                  />
+                  <img src={product.cover_photo[0]} alt={product.title} className="w-12 h-12 object-cover" />
                   <p>{product.title}</p>
                 </Anchor>
               ))}
               {searchResults.length > 5 && (
                 <div className="text-center mt-3">
-                  <Anchor to="/ResultProducts" className="text-blue-500 hover:underline" onClick={saveSearchResultsToLocalStorage}>
-                    More Views
-                  </Anchor>
+                  <Anchor to="/ResultProducts" className="text-blue-500 hover:underline" onClick={saveSearchResultsToLocalStorage}> More Views </Anchor>
                 </div>
               )}
             </div>
           )}
         </div>
+        <div className='flex flex-col items-center justify-center'>
+          <Anchor to={'/carritoPage'} className='flex flex-col items-center'>
+            <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
+            </svg>
+            <p className='hidden md:block text-[white] text-center'>My shopping cart</p>
+          </Anchor>
+        </div>
         <div className='flex ml-[5rem] w-[20rem] justify-around'>
           {!isLoggedIn() ? (
-            // Mostrar esto solo cuando el usuario no esté logueado
             <div  className='flex flex-col items-center '>
               <svg className="w-6 h-6 text-[white] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z" />
@@ -213,18 +200,16 @@ useEffect(() => {
               </div>
             </div>
           ) : isLoggedIn() && user.role === 2 ? (
-            // Mostrar esto solo cuando el usuario esté logueado
             <div className='flex flex-col items-center me-6'>
-              <div className='hidden md:flex flex-col justify-center items-center mt-2'>
-                <button onClick={navigateToControlPanel} className='w-[120%] p-3 text-[white] border-2 rounded flex justify-center items-center'>
+              <div className='hidden md:flex flex-row justify-center items-center mt-2'>
+                <button onClick={navigateToControlPanel} className='w-40 p-3 text-[white] flex justify-center items-center'>
                   <img src={user?.photo} className="h-10 rounded-full" />
-                  <p>{user?.email}</p>
+                  <p>Control Panel</p>
                 </button>
-                <button onClick={backHome} className='text-[white]'>Sign Out</button>
+                <button onClick={backHome} className='text-[white] w-30 p-2 border-2 rounded-3xl ms-6'>Sign Out</button>
               </div>
             </div>
           ) : (
-            // Mostrar esto solo cuando el usuario esté logueado
             <div className='flex flex-col items-center'>
               <img src={user?.photo} className="h-10 rounded-full" />
               <div className='hidden md:flex flex-col w-[8rem] justify-center items-center mt-2'>
@@ -233,56 +218,47 @@ useEffect(() => {
               </div>
             </div>
           )}
-          </div>
-        <div className='flex flex-col items-center justify-center'>
-          <Anchor to={'/carritoPage'} className='flex flex-col items-center'>
-          <svg className="w-6 h-6 text-[white]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
-          </svg>
-          <p className='hidden md:block text-[white] text-center'>My shopping cart</p>
-          </Anchor>
-          </div>
-      </div>
-        {isLoggedIn() && user && user.verified === false ? (
-          <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
-            <p className='font-semibold'>CLICK <button onClick={openVerified} className='text-sky-700 hover:text-white'> HERE </button> TO VERIFY YOUR ACCOUNT</p>
-          </div>
-        ) : ''}
-      {isVerified && (
-                <div className="flex flex-col w-full min-h-[25vh] items-center justify-around bg-[#FFFBEB]">
-                  <button onClick={closeVerified}>
-                    <img src="/close.png" className="h-7 ms-[20%] mt-[-4%] absolute" />
-                  </button>
-                  <form onSubmit={handleVerificationSubmit} className="flex mt-[-10%]">
-                    <label className="text-[color:var(--secondary-gray,#9D9D9D)] text-base not-italic font-normal leading-[normal]">Enter Verification Code:</label>
-                    <div className="ms-5 mt-[-20px]">
-                        <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} required className="bg-[#FFFBEB] border-b-2 border-slate-400 p-2" />
-                        <div className="mt-5 flex flex-col w-[200px] gap-2.5 p-2 rounded-[50000px] bg-[#007BFF]">
-                            <button type="submit" className="text-white text-center text-lg not-italic font-bold leading-[normal]">Verify</button>
-                        </div>
-                    </div>
-                  </form>
-              </div>
-          )}
-      <div id='segunda seccion' className="bg-[#FFFBEB] h-[10vh] w-full flex items-center p-10">
-       <DesplegableCat/>
-      <div className='hidden lg:flex justify-around w-full bg-[#FFFBEB]'>
-        <button onClick={navigateHomeAppliancePage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/iconAppliances.png" alt="" />
-          <p>Home & Appliances</p>
-        </button>
-        <button onClick={navigateGamersPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/iconGamer.png" alt="" />
-          <p>Gamers</p>
-        </button>
-        <button onClick={navigateTechPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
-          <img className='h-[2rem]' src="/techs.png" alt="" />
-          <p>Techs</p>
-        </button>
-
         </div>
-</div>
-</nav>
+      </div>
+      {isLoggedIn() && user && !user.verified ? (
+        <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
+          <p className='font-semibold'>CLICK <button onClick={openVerified} className='text-sky-700 hover:text-white'> HERE </button> TO VERIFY YOUR ACCOUNT</p>
+        </div>
+      ) : null}
+      {isVerified ? (
+        <div className="flex flex-col w-full min-h-[25vh] items-center justify-around bg-[#FFFBEB]">
+          <button onClick={closeVerified}>
+            <img src="/close.png" className="h-7 ms-[20%] mt-[-4%] absolute" />
+          </button>
+          <form onSubmit={handleVerificationSubmit} className="flex mt-[-10%]">
+            <label className="text-[color:var(--secondary-gray,#9D9D9D)] text-base not-italic font-normal leading-[normal]">Enter Verification Code:</label>
+            <div className="ms-5 mt-[-20px]">
+              <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} required className="bg-[#FFFBEB] border-b-2 border-slate-400 p-2" />
+              <div className="mt-5 flex flex-col w-[200px] gap-2.5 p-2 rounded-[50000px] bg-[#007BFF]">
+                <button type="submit" className="text-white text-center text-lg not-italic font-bold leading-[normal]">Verify</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      ) : null }
+      <div id='segunda seccion' className="bg-[#FFFBEB] h-[10vh] w-full flex items-center p-10">
+        <DesplegableCat/>
+        <div className='hidden lg:flex justify-around w-full bg-[#FFFBEB]'>
+          <button onClick={navigateHomeAppliancePage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/iconAppliances.png" alt="" />
+            <p>Home & Appliances</p>
+          </button>
+          <button onClick={navigateGamersPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/iconGamer.png" alt="" />
+            <p>Gamers</p>
+          </button>
+          <button onClick={navigateTechPage} className='p-4 h-[4rem] w-[15%] flex flex-col items-center justify-center'>
+            <img className='h-[2rem]' src="/techs.png" alt="" />
+            <p>Techs</p>
+          </button>
+        </div>
+      </div>
+    </nav>
   );
 }
 
