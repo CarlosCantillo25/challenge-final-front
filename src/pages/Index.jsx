@@ -136,7 +136,7 @@ export default function Index() {
       </div>
 {/* ESTA ES LA SECCION 2 DONDE VAN LOS CARROUSEL MULTIPLES*/}
     <div className="relative w-full  flex px-[2rem] py-[1rem] flex-col justify-center  bg-[#e6e6e6]">     
-{/* AQUI VA EL PRIMER CARROUSEL MULTIPLE*/}   
+
       <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
         <p className='text-[1.5rem]'>More views on Phones & tabs</p>
       </div>

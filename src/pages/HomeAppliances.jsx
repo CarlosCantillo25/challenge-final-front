@@ -1,38 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import productsActions from '../redux/actions/productsActions.js';
 import { Link as Anchor } from 'react-router-dom';
 
 export default function HomeAppliances() {
-  const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [datos, setDatos] = useState([]);
-  const appliances = useSelector((store) => store.products.appliances);
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(localStorage.getItem('currentPageAppliances')) || 1 //le digo que mi estado inicial sea 1 o que sea el numero almacenado en el local storage
+  );
+ const appliances = useSelector((store) => store.products.appliances);
+  
+  const datos= appliances.products;
+  console.log(appliances);
+const Tv=useRef()
+const Fridges=useRef()
+let Laundry=useRef()
+let Blenders=useRef()
+let Cooks=useRef()
+let AirConditioners=useRef()
 
-  const handlePrevPage = () => {
-    if (appliances.prevPage) {
-      setCurrentPage(appliances.prevPage);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (appliances.nextPage) {
-      setCurrentPage(appliances.nextPage);
-    }
-  };
-
+  const dispatch= useDispatch()
+  const page=currentPage //page va a ser el estado dinamico del current page para hacer referencia a que pagina vamos a navegar
   useEffect(() => {
-    dispatch(productsActions.read_pag_appliances(currentPage));
-  }, [dispatch, currentPage]);
+  localStorage.setItem('currentPageAppliances', currentPage);
+  dispatch(productsActions.read_pag_appliances(page)) //le vamos a dar un parametro que indica la pagina (page)
+  },[page ]);
 
-  useEffect(() => {
-    if (appliances.currentPage) {
-      setCurrentPage(appliances.currentPage);
-      setDatos(appliances.products);
-    }
-  }, [appliances.currentPage]);
-
+function handleNext(){
+    setCurrentPage(currentPage + 1)
+   }
+function handlePrev(){
+  setCurrentPage(currentPage - 1)
+}
   const formatCurrency = (amount) => {
     if (typeof amount === 'number') {
       return `USD $${amount.toFixed(0)}`;
@@ -40,7 +38,7 @@ export default function HomeAppliances() {
       return '';
     }
   };
-
+ 
   return (
     <div className='flex'>
     <div className='flex flex-col bg-[#e2e1e1] py-[2rem]  items-center'>
@@ -56,22 +54,24 @@ export default function HomeAppliances() {
 </Anchor>
 ))}
 </div>
-<div className='flex justify-center  bg-[#e2e1e1]'>
+<div className='flex justify-center  bg-[#f1f1f1] gap-8 items-center'>
         <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className='mr-4 px-4 py-2 bg-blue-500 text-white rounded'
+        className=' px-4 py-2 bg-blue-500 text-white rounded disabled:bg-[gray]'
+        onClick={handlePrev}
+        disabled={appliances.prevPage === null}
         >
-          Prev
+          Prev page
         </button>
+        <p className='text-[1.3rem] text-[#575656]'>Page: {currentPage}</p>
         <button
-          onClick={handleNextPage}
-          disabled={currentPage === appliances.totalPages}
-          className='px-4 py-2 bg-blue-500 text-white rounded'
+          className='px-4 py-2 bg-blue-500 text-white rounded disabled:bg-[gray]'
+          onClick={handleNext}
+          disabled={ appliances.nextPage === null}
         >
-          Next
+          Next page
         </button>
       </div>     
+        
 </div>
     </div>
   );

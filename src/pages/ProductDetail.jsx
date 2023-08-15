@@ -6,6 +6,7 @@ import { Link as Anchor, useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { formToJSON } from 'axios';
 
 const ProductDetail = () => {
   const  _id  = useParams()
@@ -23,10 +24,15 @@ const ProductDetail = () => {
   const captureId=inputProduct.current?.value
   const product = useSelector((state) => state.product.product);
 
-  function clickAddToCart() {
-    if (captureId && product) {
-      const currentCart = JSON.parse(localStorage.getItem('product cart')) || [];
+
   
+  
+  function clickAddToCart() {
+    const token = localStorage.getItem('token');
+    console.log(token);
+  
+    if (captureId && product && token !== null) {
+      const currentCart = JSON.parse(localStorage.getItem('product cart')) || [];
       currentCart.push(captureId);
       localStorage.setItem('product cart', JSON.stringify(currentCart));
   
@@ -36,6 +42,17 @@ const ProductDetail = () => {
         title: 'Your product was added to the cart',
         showConfirmButton: false,
         timer: 1500
+      });
+    } else if (token === null) {
+      console.log("Token is null");
+      Swal.fire({
+        title: 'You need to log in to be able to buy',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
       });
     }
   }

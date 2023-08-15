@@ -84,11 +84,14 @@ useEffect(() => {
   const closeVerified = () => {
     setIsVerified(false);
   };
-
-
- function navigateHomeAppliancePage() {
+  function navigateHomeAppliancePage() {
     navigate(`/homeAppliances`);
   }
+  function updateCurrentPage(newPage) {
+    setCurrentPage(newPage);
+    localStorage.setItem('currentPage', newPage);
+  }
+
   function navigateGamersPage() {
     navigate("/gamersPage");
   }
