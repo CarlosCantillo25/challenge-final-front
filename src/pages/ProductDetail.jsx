@@ -305,7 +305,7 @@ const ProductDetail = () => {
                             <p className='mb-2'>You are in </p>
                         </div>
                         <div className='mt-2 border-b-2'>
-                            <p className='flex flex-row items-center mb-2'><img src="/tienda.png" className='w-[30px] me-4'/>Withdraw FREE at our branch. <span className='font-semibold text-lime-700 ms-2'>Withdraw it NOW!</span></p>
+                            <p className='flex flex-row items-center mb-2'><img src="/tienda.png" className='w-[30px] me-4'/>Withdraw FREE at our branch. <Anchor to={'https://www.google.com.ar/maps/place/140+W+Monroe+St,+Jacksonville,+FL+32202,+EE.+UU./@30.3286895,-81.6619868,17z/data=!3m1!4b1!4m6!3m5!1s0x88e5b7179713cfcf:0x40717ce2427e49be!8m2!3d30.3286849!4d-81.6594119!16s%2Fg%2F11bw4j34bs?entry=ttu'} className='font-semibold text-lime-700 ms-2'>Withdraw it NOW!</Anchor></p>
                             <p className='text-sm text-sky-700 mb-2'>See branches</p>
                         </div>
                         <div className='flex flex-row justify-center items-center mt-4'>

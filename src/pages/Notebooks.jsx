@@ -6,9 +6,9 @@ export default function Notebooks() {
 
   return (
     <div>
-<div className='w-full h-[30vh]'>
-  <img className='h-[60vh] w-full' src="https://www.universityofgalway.ie/media/informationsolutionsservices/images/servicesforstudents/AdobeStock_220815091.jpeg" alt="" />
-</div>
+      <div className='w-full h-[30vh]'>
+        <img className='h-[60vh] w-full' src="https://www.universityofgalway.ie/media/informationsolutionsservices/images/servicesforstudents/AdobeStock_220815091.jpeg" alt="" />
+      </div>
       <Product property={prop} />
     </div>
   );
