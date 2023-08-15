@@ -162,10 +162,10 @@ useEffect(() => {
   const handleInputBlur = () => {
     setIsModalOpen(false);
   };
+
   useEffect(() => {
     performSearch();
   }, [searchTerm]);
-
   
   return (
     <nav className="bg-[#007BFF] w-full min-h-[25vh]">
@@ -240,13 +240,11 @@ useEffect(() => {
           </Anchor>
           </div>
       </div>
-      <div>
         {isLoggedIn() && user && user.verified === false ? (
           <div className='bg-[#ffd782] h-[50px] flex justify-center items-center'>
             <p className='font-semibold'>CLICK <button onClick={openVerified} className='text-sky-700 hover:text-white'> HERE </button> TO VERIFY YOUR ACCOUNT</p>
           </div>
         ) : ''}
-      </div>
       {isVerified && (
                 <div className="flex flex-col w-full min-h-[25vh] items-center justify-around bg-[#FFFBEB]">
                   <button onClick={closeVerified}>
