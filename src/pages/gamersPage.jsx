@@ -42,39 +42,8 @@ console.log(gamers);
   
   return (
     <div className='flex'>
-      <div className='w-[35rem] h-screen py-[3rem] px-[1.5rem]'>
-        <p className='text-[1.3rem] text-[gray]'>Filter by type of appliance</p>
-        <p className='mt-[3rem] text-[1.2rem] text-[gray]'>Select product</p>
-        <hr className='border-[#c9c6c6] mt-2' />
-        <div className='flex flex-col gap-[1rem] mt-[1rem]'>
-      <div className='flex items-center mt-[2rem]'>
-      <input type='checkbox' id='product1' className='mr-2' />
-      <label htmlFor='product1'>Tv</label>
-    </div>
-    <div className='flex items-center mt-1'>
-      <input type='checkbox' id='product2' className='mr-2' />
-      <label htmlFor='product2'>Fridges</label>
-    </div>
-    <div className='flex items-center mt-1'>
-      <input type='checkbox' id='product3' className='mr-2' />
-      <label htmlFor='product3'>Laundry</label>
-    </div>
-    <div className='flex items-center mt-1'>
-      <input type='checkbox' id='product4' className='mr-2' />
-      <label htmlFor='product4'>Blenders</label>
-    </div>
-    <div className='flex items-center mt-1'>
-      <input type='checkbox' id='product5' className='mr-2' />
-      <label htmlFor='product5'>Cooks</label>
-    </div>
-    <div className='flex items-center mt-1'>
-      <input type='checkbox' id='product6' className='mr-2' />
-      <label htmlFor='product6'>Air conditioners</label>
-    </div>
-        </div>
-    </div>
-    <div className='flex flex-col bg-[#e2e1e1] py-[2rem]'>
-    <div className="flex flex-wrap justify-center py-[2rem] bg-[#e2e1e1]">
+    <div className='flex flex-col bg-[#e2e1e1] py-[2rem] items-center'>
+    <div className="flex flex-wrap justify-center py-[2rem] bg-[#e2e1e1] w-[80%]">
       {datos?.map((element) =>  (
           <Anchor to={`/products/${element._id}`}>
       <div className="flex flex-col justify-center text-center p-8 items-center m-2 bg-white h-[300px] lg:h-[25rem] rounded-2xl drop-shadow-xl hover:border-4 w-[300px]">

@@ -21,7 +21,7 @@ const [searchTerm, setSearchTerm] = useState("");
 const [searchResults, setSearchResults] = useState([]);
 const [isModalOpen, setIsModalOpen] = useState(false);
 const [filteredProducts, setFilteredProducts] = useState([]);
-  const searchQuery = localStorage.getItem('searchTerm');
+const searchQuery = localStorage.getItem('searchTerm');
 
   
   const performSearch = () => {
