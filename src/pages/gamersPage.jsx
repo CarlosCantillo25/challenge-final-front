@@ -4,33 +4,15 @@ import productsActions from '../redux/actions/productsActions.js';
 import { Link as Anchor } from 'react-router-dom';
 export default function gamersPage() {
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [datos, setDatos] = useState([]);
+  const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem('currentPageGamers'))||1);
   const gamers = useSelector((store) => store.products.gamers);
+  const datos=gamers.products
 console.log(gamers);
-  const handlePrevPage = () => {
-    if (gamers.prevPage) {
-      setCurrentPage(gamers.prevPage);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (gamers.nextPage) {
-      setCurrentPage(gamers.nextPage);
-    }
-  };
-
+const pages=currentPage
   useEffect(() => {
-    dispatch(productsActions.read_pag_gamers(currentPage));
-  }, [dispatch, currentPage]);
-
-  useEffect(() => {
-    if (gamers.currentPage) {
-      setCurrentPage(gamers.currentPage);
-      setDatos(gamers.products);
-    }
-  }, [gamers.currentPage]);
-
+    localStorage.setItem('currentPageGamers', currentPage);
+    dispatch(productsActions.read_pag_gamers(pages))
+}, [pages]);
   const formatCurrency = (amount) => {
     if (typeof amount === 'number') {
       return `USD $${amount.toFixed(0)}`;
@@ -38,7 +20,13 @@ console.log(gamers);
       return '';
     }
   };
-
+  function handleNext(){
+    setCurrentPage(currentPage + 1)
+   }
+  
+  function handlePrev(){
+    setCurrentPage(currentPage - 1)
+  }
   
   return (
     <div className='flex'>
@@ -55,22 +43,24 @@ console.log(gamers);
 </Anchor>
 ))}
 </div>
-<div className='flex justify-center  bg-[#e2e1e1]'>
+<div className='flex justify-center  bg-[#f1f1f1] gap-8 items-center'>
         <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className='mr-4 px-4 py-2 bg-blue-500 text-white rounded'
+        className=' px-4 py-2 bg-blue-500 text-white rounded disabled:bg-[gray]'
+        onClick={handlePrev}
+        disabled={gamers.prevPage === null}
         >
-          Prev
+          Prev page
         </button>
+        <p className='text-[1.3rem] text-[#575656]'>Page: {currentPage}</p>
         <button
-          onClick={handleNextPage}
-          disabled={currentPage === gamers.totalPages}
-          className='px-4 py-2 bg-blue-500 text-white rounded'
+          className='px-4 py-2 bg-blue-500 text-white rounded disabled:bg-[gray]'
+          onClick={handleNext}
+          disabled={ gamers.nextPage === null}
         >
-          Next
+          Next page
         </button>
       </div>     
+        
 </div>
     </div>
   );
