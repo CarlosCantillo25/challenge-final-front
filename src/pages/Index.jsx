@@ -91,7 +91,7 @@ export default function Index() {
     // Agrega aquí tus imágenes con sus nombres de archivos
  ];
  
-const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
+  const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.type === "Tabs");
   const currentPhones = imagesPhones.slice(currentSlideCarousel2, currentSlideCarousel2 + imagesPorSlide);
   const imagesDesktop = moreViews.filter(item => item.type === "NOTEBOOK" || item.type === "DESKTOP");
   const currentDesktop = imagesDesktop.slice(currentSlideCarousel3, currentSlideCarousel3 + imagesPorSlide);
@@ -135,219 +135,134 @@ const imagesPhones = moreViews.filter(item => item.type === "Phones" || item.typ
         </div>
       </div>
 {/* ESTA ES LA SECCION 2 DONDE VAN LOS CARROUSEL MULTIPLES*/}
-      <div className="relative w-full  flex px-[2rem] py-[1rem] flex-col justify-center  bg-[#f1f1f1]">
-{/* AQUI VA EL PRIMER CARROUSEL MULTIPLE*/}        
+    <div className="relative w-full  flex px-[2rem] py-[1rem] flex-col justify-center  bg-[#e6e6e6]">     
+
       <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
         <p className='text-[1.5rem]'>More views on Phones & tabs</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
-  <svg
-    onClick={prevSlideCarousel2}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
-  </svg>
-  {currentPhones.map((item, index) => (
-  <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
-    <Anchor to={`/products/${item._id}`}>
-      <img
-        src={item.cover_photo[0]}
-        alt={`Slide ${currentSlideCarousel2 + index + 1}`}
-        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
-      />  
-      </Anchor>
-      <h3 className="text-center text-gray-800">{item.brand}</h3>
-      <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
-      <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
-    </div>
-  ))}
-  <svg
-    onClick={nextSlideCarousel2}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-  </svg>
-</div>
-
+        <svg onClick={prevSlideCarousel2} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+        </svg>
+        {currentPhones.map((item, index) => (
+          <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
+            <Anchor to={`/products/${item._id}`}>
+              <img src={item.cover_photo[0]} alt={`Slide ${currentSlideCarousel2 + index + 1}`} className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]" />  
+            </Anchor>
+            <h3 className="text-center text-gray-800">{item.brand}</h3>
+            <h4 className="text-center text-gray-800">{item.title}</h4>
+            <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
+            <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
+          </div>
+        ))}
+        <svg
+          onClick={nextSlideCarousel2} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </div>  
 {/* AQUI VA EL SEGUNDO CARROUSEL MULTIPLE*/} 
-<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+      <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
         <p className='text-[1.5rem]'>More views on Desktops & Notebooks</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
-  <svg
-    onClick={prevSlideCarousel3}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
-  </svg>
-  {currentDesktop.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
-
-      <Anchor to={`/products/${item._id}`}>
-      <img
-        src={item.cover_photo[0]}
-        alt={`Slide ${currentSlideCarousel3 + index + 1}`}
-        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
-      />  
-      </Anchor>
-      <h3 className="text-center text-gray-800">{item.brand}</h3>
-      <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
-      <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
-    </div>
-  ))}
-  <svg
-    onClick={nextSlideCarousel3}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-  </svg>
-</div>
+        <svg onClick={prevSlideCarousel3} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+        </svg>
+        {currentDesktop.map((item, index) => (
+          <div key={item._id} className="carousel-item bg-[white] h-[30rem] w-[20rem] rounded-[10px] p-[1rem]">
+            <Anchor to={`/products/${item._id}`}>
+              <img src={item.cover_photo[0]} alt={`Slide ${currentSlideCarousel3 + index + 1}`} className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]" />  
+            </Anchor>
+            <h3 className="text-center text-gray-800">{item.brand}</h3>
+            <h4 className="text-center text-gray-800">{item.title}</h4>
+            <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
+            <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
+          </div>
+        ))}
+        <svg onClick={nextSlideCarousel3} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </div>
 {/* AQUI VA EL TERCER CARROUSEL MULTIPLE*/} 
-<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+      <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
         <p className='text-[1.5rem]'>More views on Gamers</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
-  <svg
-    onClick={prevSlideCarousel4}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
-  </svg>
-  {currentGamers.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
-      <Anchor to={`/products/${item._id}`} >
-      <img
-        src={item.cover_photo[0]}
-        alt={`Slide ${currentSlideCarousel4 + index + 1}`}
-        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
-      />  
-      </Anchor>
-      <h3 className="text-center text-gray-800">{item.brand}</h3>
-      <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
-      <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
-    </div>
-  ))}
-  <svg
-    onClick={nextSlideCarousel4}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-  </svg>
-</div> 
+        <svg onClick={prevSlideCarousel4}className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10">
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+        </svg>
+        {currentGamers.map((item, index) => (
+          <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
+            <Anchor to={`/products/${item._id}`} >
+              <img src={item.cover_photo[0]} alt={`Slide ${currentSlideCarousel4 + index + 1}`} className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]" />  
+            </Anchor>
+            <h3 className="text-center text-gray-800">{item.brand}</h3>
+            <h4 className="text-center text-gray-800">{item.title}</h4>
+            <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
+            <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
+          </div>
+        ))}
+        <svg onClick={nextSlideCarousel4} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </div> 
 {/* AQUI VA EL CUARTO CARROUSEL MULTIPLE*/}  
-<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+      <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
         <p className='text-[1.5rem]'>More views on Audio & Video</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
-  <svg
-    onClick={prevSlideCarousel5}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
-  </svg>
+        <svg onClick={prevSlideCarousel5} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+        </svg>
+        {currentAudio.map((item, index) => (
+          <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
 
-  {currentAudio.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
-
-      <Anchor to={`/products/${item._id}`}>
-      <img
-        src={item.cover_photo[0]}
-        alt={`Slide ${currentSlideCarousel5 + index + 1}`}
-        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
-      />  
-      </Anchor>
-      <h3 className="text-center text-gray-800">{item.brand}</h3>
-      <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
-      <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
-    </div>
-  ))}
-  <svg
-    onClick={nextSlideCarousel5}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-  </svg>
-</div>
+            <Anchor to={`/products/${item._id}`}>
+            <img
+              src={item.cover_photo[0]}
+              alt={`Slide ${currentSlideCarousel5 + index + 1}`}
+              className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
+            />  
+            </Anchor>
+            <h3 className="text-center text-gray-800">{item.brand}</h3>
+            <h4 className="text-center text-gray-800">{item.title}</h4>
+            <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
+            <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
+          </div>
+        ))}
+        <svg onClick={nextSlideCarousel5} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </div>
 {/* AQUI VA EL QUINTO CARROUSEL MULTIPLE*/}  
-<div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
+      <div className='py-[1rem] px-[3.5rem] mt-[2rem]'>
         <p className='text-[1.5rem]'>More views on Appliances</p>
       </div>
       <div className="carousel-container flex justify-around w-full items-center">
-  <svg
-    onClick={prevSlideCarousel6}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] "
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
-  </svg>
+        <svg onClick={prevSlideCarousel6} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem] " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+        </svg> 
+        {currentElectro.map((item, index) => (
+          <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
 
-  {currentElectro.map((item, index) => (
-    <div key={item._id} className="carousel-item bg-[white] w-[20rem] h-[30rem] rounded-[10px] p-[1rem]">
-
-      <Anchor to={`/products/${item._id}`}>
-      <img
-        src={item.cover_photo[0]}
-        alt={`Slide ${currentSlideCarousel6 + index + 1}`}
-        className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
-      /> 
-      </Anchor>
-      <h3 className="text-center text-gray-800">{item.brand}</h3>
-      <h4 className="text-center text-gray-800">{item.title}</h4>
-      <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
-      <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
+            <Anchor to={`/products/${item._id}`}>
+            <img
+              src={item.cover_photo[0]}
+              alt={`Slide ${currentSlideCarousel6 + index + 1}`}
+              className="mx-auto w-[20rem] h-[20rem] object-contain py-[1rem]"
+            /> 
+            </Anchor>
+            <h3 className="text-center text-gray-800">{item.brand}</h3>
+            <h4 className="text-center text-gray-800">{item.title}</h4>
+            <p className="text-center text-gray-500 text-[1.2rem]">USD$ {item.price}</p>
+            <p className="text-center text-[#5ea85e]">Withdraw it NOW!</p>
+          </div>
+        ))}
+        <svg onClick={nextSlideCarousel6} className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10" >
+          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </div>
     </div>
-  ))}
-  <svg
-    onClick={nextSlideCarousel6}
-    className="w-7 h-7 text-gray-800 cursor-pointer bg-[white] rounded-[50px] p-[0.3rem]"
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 14 10"
-  >
-    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-  </svg>
-</div>
-    </div>
-    </main>
+  </main>
   );
 }

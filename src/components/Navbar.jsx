@@ -23,7 +23,6 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 const [filteredProducts, setFilteredProducts] = useState([]);
 const searchQuery = localStorage.getItem('searchTerm');
 
-
   
   const performSearch = () => {
     if (searchTerm === '') {

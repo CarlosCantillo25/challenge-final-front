@@ -30,7 +30,6 @@ const ProductDetail = () => {
       currentCart.push(captureId);
       localStorage.setItem('product cart', JSON.stringify(currentCart));
   
-      // Mostrar la alerta de éxito
       Swal.fire({
         position: 'center',
         icon: 'success',

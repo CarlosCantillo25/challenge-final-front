@@ -29,28 +29,9 @@ const pages=currentPage
   }
   
   return (
-    <div className='flex justify-center bg-[#f1f1f1]'>
-      
-     <div className='flex flex-col bg-[#f1f1f1] py-[1rem] px-[8rem]'>
-     <div className='flex justify-center  bg-[#f1f1f1] gap-8 items-center'>
-        <button
-        className=' px-4 py-2 bg-blue-500 text-white rounded disabled:bg-[gray]'
-        onClick={handlePrev}
-        disabled={gamers.prevPage === null}
-        >
-          Prev page
-        </button>
-        <p className='text-center text-[1.3rem] text-[#575656]'>Page: {currentPage}</p>
-        <button 
-          className='px-4 py-2 bg-blue-500 text-white rounded disabled:bg-[gray]'
-          onClick={handleNext}
-          disabled={ gamers.nextPage === null}
-        >
-          Next page
-        </button>
-      </div>     
-        
-    <div className="flex flex-wrap justify-center py-[2rem] bg-[#f1f1f1] gap-5">
+    <div className='flex'>
+    <div className='flex flex-col bg-[#e2e1e1] py-[2rem] items-center'>
+    <div className="flex flex-wrap justify-center py-[2rem] bg-[#e2e1e1] w-[80%]">
       {datos?.map((element) =>  (
           <Anchor to={`/products/${element._id}`}>
       <div className="flex flex-col justify-center text-center p-8 items-center m-2 bg-white h-[300px] lg:h-[25rem] rounded-2xl drop-shadow-xl hover:border-4 w-[300px]">
