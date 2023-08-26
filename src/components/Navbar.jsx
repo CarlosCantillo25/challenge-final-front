@@ -204,7 +204,7 @@ useEffect(() => {
               <div className='hidden md:flex flex-row justify-center items-center mt-2'>
                 <button onClick={navigateToControlPanel} className='w-40 p-3 text-[white] flex justify-center items-center'>
                   <img src={user?.photo} className="h-10 rounded-full" />
-                  <p>Control Panel</p>
+                  <p> Control Panel</p>
                 </button>
                 <button onClick={backHome} className='text-[white] w-30 p-2 border-2 rounded-3xl ms-6'>Sign Out</button>
               </div>
