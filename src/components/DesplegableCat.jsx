@@ -27,7 +27,7 @@ export default function DesplegableCat() {
     <div className="relative group bg-[#FFFBEB] h-[10vh] pt-[1.5rem] pl-[1.8rem] w-[20rem]" onMouseEnter={openDropdown} onMouseLeave={closeDropdown} >
       <p className="text-[gray] cursor-pointer font-semibold lg:text-2xl text-xl ms-[-40px] md:ms-0 flex items-center justify-around">
         More
-        <svg className={`w-[1rem] mt-[0.4rem] w-6 h-6 text-gray-800 dark:text-white ${openSearch ? 'transform rotate-180' : ''}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
+        <svg className={`mt-[0.4rem] w-6 h-6 text-gray-800 dark:text-white ${openSearch ? 'transform rotate-180' : ''}`} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 8">
           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"/>
         </svg>
       </p>
