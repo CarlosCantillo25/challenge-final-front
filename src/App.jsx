@@ -1,9 +1,12 @@
+import Index from "./pages/Index";
+import Main from "./layouts/Main"
+
 function App() {
 
   return (
-    <>
-      <h1>Vite + React</h1>
-    </>
+    <Main>
+      <Index />
+    </Main>
   )
 }
 
