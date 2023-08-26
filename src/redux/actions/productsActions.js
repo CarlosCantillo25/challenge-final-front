@@ -4,7 +4,7 @@ const read_products = createAsyncThunk(
     'read_products',async () => {
         console.log()
         try {
-            let {data} = await axios.get("http://localhost:8082/api/products")
+            let {data} = await axios.get("https://mobile-cggi.onrender.com/api/products")
             return data.response
         } catch (error) {
             console.log(error)
@@ -16,7 +16,7 @@ const read_pag_appliances=createAsyncThunk(
     'read_pag_appliances',async (page) => {
         
         try {
-            let {data} = await axios.get(`http://localhost:8082/api/products/appliances?page=${page}`)
+            let {data} = await axios.get(`https://mobile-cggi.onrender.com/api/products/appliances?page=${page}`)
             console.log(data)
             return {
                 products: data.response, // Datos de productos y electrodomésticos
@@ -37,7 +37,7 @@ const read_pag_techs=createAsyncThunk(
     'read_pag_techs',async (page) => {
         
         try {
-            let {data} = await axios.get(`http://localhost:8082/api/products/techs?page=${page}`)
+            let {data} = await axios.get(`https://mobile-cggi.onrender.com/api/products/techs?page=${page}`)
             console.log(data)
             return {
                 products: data.response, // Datos de productos y electrodomésticos
@@ -58,7 +58,7 @@ const read_pag_gamers=createAsyncThunk(
     'read_pag_gamers',async (page) => {
         
         try {
-            let {data} = await axios.get(`http://localhost:8082/api/products/gamers?page=${page}`)
+            let {data} = await axios.get(`https://mobile-cggi.onrender.com/api/products/gamers?page=${page}`)
             console.log(data)
             return {
                 products: data.response, // Datos de productos y electrodomésticos
@@ -80,7 +80,7 @@ const update_product = createAsyncThunk(
     'update',
     async (product) => {
       try {
-        const response = await axios.put( `http://localhost:8082/api/products/${product._id}`, product );
+        const response = await axios.put( `https://mobile-cggi.onrender.com/api/products/${product._id}`, product );
         return response.data;
       } catch (error) {
         console.log(error);
@@ -93,7 +93,7 @@ const update_product = createAsyncThunk(
     'delete',
     async (productId) => {
       try {
-        const response = await axios.delete(`http://localhost:8082/api/products/${productId}`);
+        const response = await axios.delete(`https://mobile-cggi.onrender.com/api/products/${productId}`);
         return response.data;
       } catch (error) {
         console.log(error);
