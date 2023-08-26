@@ -23,9 +23,6 @@ const ProductDetail = () => {
   const inputProduct = useRef()
   const captureId=inputProduct.current?.value
   const product = useSelector((state) => state.product.product);
-
-
-  
   
   function clickAddToCart() {
     const token = localStorage.getItem('token');
@@ -267,8 +264,7 @@ const ProductDetail = () => {
   function navigateToCategoryPage(){
     navigate(`/${product.type}`)
   }
-
-
+  
   return (
     <div className='flex flex-col w-full'>
       <div className='w-full flex flex-col items-center justify-center bg-white'>
@@ -298,7 +294,7 @@ const ProductDetail = () => {
                             <p className='font-bold text-sm'>Our banking promotions!</p>
                             <p className='flex items-start mt-2'>Pay in 12 installments of {formatCurrency(cuota12)}</p>
                             <p className='flex items-start'>Pay in 6 installments of {formatCurrency(cuota6)}</p>
-                            <p className='flex items-start mb-2'>Pay in 3 installments of{formatCurrency(cuota3)}</p>
+                            <p className='flex items-start mb-2'>Pay in 3 installments of {formatCurrency(cuota3)}</p>
                             <p className='text-sm text-sky-700 mb-2'>See all payment methods</p>
                         </div>
                         <div className='mt-2 border-b-2'>
@@ -306,7 +302,7 @@ const ProductDetail = () => {
                         </div>
                         <div className='mt-2 border-b-2'>
                             <p className='flex flex-row items-center mb-2'><img src="/tienda.png" className='w-[30px] me-4'/>Withdraw FREE at our branch. <Anchor to={'https://www.google.com.ar/maps/place/140+W+Monroe+St,+Jacksonville,+FL+32202,+EE.+UU./@30.3286895,-81.6619868,17z/data=!3m1!4b1!4m6!3m5!1s0x88e5b7179713cfcf:0x40717ce2427e49be!8m2!3d30.3286849!4d-81.6594119!16s%2Fg%2F11bw4j34bs?entry=ttu'} className='font-semibold text-lime-700 ms-2'>Withdraw it NOW!</Anchor></p>
-                            <p className='text-sm text-sky-700 mb-2'>See branches</p>
+                            <Anchor to={'https://www.google.com.ar/maps/place/140+W+Monroe+St,+Jacksonville,+FL+32202,+EE.+UU./@30.3286895,-81.6619868,17z/data=!3m1!4b1!4m6!3m5!1s0x88e5b7179713cfcf:0x40717ce2427e49be!8m2!3d30.3286849!4d-81.6594119!16s%2Fg%2F11bw4j34bs?entry=ttu'} className='text-sm text-sky-700 mb-2'>See branches</Anchor>
                         </div>
                         <div className='flex flex-row justify-center items-center mt-4'>
                           <button ref={inputProduct} onClick={clickAddToCart}  value={id} className='border p-2 bg-[#007BFF] rounded-md w-[250px]'>

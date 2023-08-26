@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 const ControlPanel = () => {
     const navigate = useNavigate()
@@ -34,15 +35,24 @@ const ControlPanel = () => {
     }
 
     function navigateToGoodReviews() {
-        navigate("/GoodReviews")
+      Swal.fire({
+        icon: 'error',
+        title: "Available in the next update!",
+    });
     }
 
     function navigateToBadReviews() {
-        navigate("/BadReviews")
+      Swal.fire({
+        icon: 'error',
+        title: "Available in the next update!",
+    });
     }
 
     function navigateToAllReviews() {
-        navigate("/AllReviews")
+      Swal.fire({
+        icon: 'error',
+        title: "Available in the next update!",
+    });
     }
 
     useEffect(() => {
